@@ -1,0 +1,741 @@
+/**
+ * 	Name: layout.css
+ *
+ *  Styling for the layout of the pages - header, footer, page sections etc.
+ *
+ *  T.O.C
+ *
+ *	=Wrap
+ *	=Header
+ *	=Logo
+ *	=Menu
+ *		=Menu Basics
+ *		=Menu Skin
+ *		=DropDown
+ *		=Mega Menu Section
+ *		=Menu Arrows
+ *	=Mobile Menu 
+ *	=Mobile menu trigger
+ *	=Custom search form 
+ *	=Sticky Header
+ *	=Content
+ *	=Page Header
+ *	=Fullwidth Section
+ *	=Footer Top
+ *	=Footer
+ *	=Footer Bottom
+ *	=Back to top
+ *	=Misc 
+ *
+ */
+ 
+/* ==========================================================================
+   =Wrap
+   ========================================================================== */
+
+	#wrap {
+		position: relative;
+		background-color: #fff;
+	}
+	
+	@media (max-width: 767px) {
+
+		#wrap {}
+
+	}
+   
+/* ==========================================================================
+   =Header 
+   ========================================================================== */
+   	
+	#header {
+		margin: 0 auto; 
+	}
+	
+/* ==========================================================================
+   =Logo
+   ========================================================================== */
+   
+	#logo {
+		padding: 15px 0 12px 0;
+	}
+	
+	/**
+	 * 1. we need the <a> to be only the size of it's child <img> element
+	 * 2. it shouldn't extend beyond the size of it's parent if it's child <img> is very large e.g 1000x1000 px
+	 */
+	
+	#logo a {
+		display: inline-block; /* 1 */
+		max-width: 100%; 	   /* 2 */
+	}
+	
+	#logo img { display: block; }	
+	
+	@media (max-width: 767px) {
+
+		/**
+		 * 1. on mobile devices logo padding right needs to be the width of the
+		 *	  mobile menu trigger + some spacing so as to not let the logo <a>
+		 *    overlap the mobile menu trigger
+		 */
+	
+		#logo {  
+			padding-right: 50px; 	/* 1 */
+		}
+		
+	}
+	
+/* ==========================================================================
+   =Menu 
+   ========================================================================== */
+
+/* =Menu Basics
+   ========================================================================== */
+   
+	.sf-menu,
+	.sf-menu ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	.sf-menu > li { float: left; }
+
+	.sf-menu > li > a {
+		position: relative;
+		display: block;
+	}
+	
+	/**
+ 	 * 1. z-index is 1025 because the sticky menu is 1020
+ 	 */
+	
+	.sf-menu .sf-mega,
+	.sf-menu li.dropdown ul {
+		position: absolute;
+		z-index: 1025;		/* 1 */
+		top: 100%;
+		left: 0;
+		display: none;
+	}
+	
+	.sf-menu li.dropdown { position: relative; }
+	
+	.sf-menu li.dropdown ul ul {
+		top: -22px;
+		left: 100%;
+	}
+	
+	.sf-menu li:hover > .sf-mega,
+	.sf-menu li.sfHover > .sf-mega,
+	.sf-menu li.dropdown:hover > ul,
+	.sf-menu li.dropdown.sfHover > ul { display: block; }
+
+/* =Menu Skin
+   ========================================================================== */
+	
+	.sf-menu { float: right; } 
+	
+	.sf-menu a {
+		display: block;
+		padding: 10px 0;
+		font: 14px 'Lato', Arial, sans-serif;
+		font-weight: 700;
+		color: #252525; 
+		text-decoration: none;
+	}
+	
+	.sf-menu li.dropdown a { padding: 10px 25px; }
+	
+	.sf-menu li:last-child > a { border-bottom: none; }
+	
+	.sf-menu > li > a,
+	.sf-menu > li.dropdown > a {
+		padding: 20px 12px 21px 12px;
+		color: #252525;
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 900;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;	
+	}
+	
+	.sf-menu > li a i { margin-right: 5px; }
+	
+	.sf-menu > li.current > a,
+	.sf-menu li.sfHover > a,
+	.sf-menu a:hover,
+	.sf-menu li.sfHover a:hover {
+		color: #85c334;
+		text-decoration: none;	
+	}
+
+/* =DropDown
+   ========================================================================== */
+	
+	/**
+ 	 * 1. allow long menu items to determine submenu width
+ 	 */
+	
+	.sf-menu li.dropdown ul {
+		min-width: 220px; 	/* 1 */
+		padding: 20px 0;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 2px solid #85c334;	
+		background-color: #fff;			
+	}	
+		
+/* =Mega Menu Section
+   ========================================================================== */
+	
+	.sf-mega {
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+		padding: 20px 0;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 2px solid #85c334;
+		background-color: #fff;
+	}
+
+	.sf-mega-section {
+		float: left;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+		padding: 0 25px;
+	}
+
+	/**
+ 	 * 1. set mega menu section size, as a percentage of the mega menu width
+ 	 */
+	
+	.sf-mega.sf-mega-1-col .sf-mega-section{ width: 100%; } /* 1 */
+	
+	.sf-mega.sf-mega-2-col .sf-mega-section{ width: 50%; }
+	
+	.sf-mega.sf-mega-3-col .sf-mega-section{ width: 33.3333333333%; }
+	
+	.sf-mega.sf-mega-4-col .sf-mega-section{ width: 25%; }
+	
+	.sf-mega-section-title {}
+	
+/* =Menu Arrows
+   ========================================================================== */
+	
+	.sf-arrows .sf-with-ul:after {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		display: none;
+		width: 0;
+		height: 0;
+		border: 4px solid transparent;
+		border-top-color: #8d8c8c;
+		margin-top: -3px;
+		content: "";
+	}
+		
+	.sf-arrows > li > .sf-with-ul:focus:after,
+	.sf-arrows > li:hover > .sf-with-ul:after,
+	.sf-arrows > .sfHover > .sf-with-ul:after { border-top-color: rgba(0, 0, 0, 0.7); }
+		
+	.sf-arrows ul .sf-with-ul:after {
+		display: block;
+		border-color: transparent;
+		border-left-color: #8d8c8c;
+		margin-top: -4px;
+		margin-right: 10px;
+	}
+	
+	.sf-arrows ul li > .sf-with-ul:focus:after,
+	.sf-arrows ul li:hover > .sf-with-ul:after,
+	.sf-arrows ul .sfHover > .sf-with-ul:after { border-left-color: rgba(0, 0, 0, 0.7); }
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		#menu { display: none; }
+
+	}
+	
+	@media (max-width: 767px) {
+
+		#menu { display: none; }
+	
+	}
+	
+/* ==========================================================================
+   =Mobile Menu 
+   ========================================================================== */
+			
+	#mobile-menu {
+		border-bottom: 1px solid #e0e0e0;
+		margin-bottom: 0;
+		background-color: #85c334;
+	}
+	
+	#mobile-menu li {	
+		display: block;
+		margin: 0;
+	}
+		
+	#mobile-menu > li > ul, 
+	#mobile-menu > li > ul > li > ul {
+		display: none;
+		margin-left: 0;
+	}
+	
+	#mobile-menu .sf-mega {
+		display: none;
+		padding: 0;
+		border: none;
+		margin: 0;
+		background-color: transparent;
+	}
+	
+	#mobile-menu .sf-mega-section {
+		float: none;
+		width: 100%;
+		padding: 0;
+		border: none;
+	}
+	
+	#mobile-menu .sf-mega-section ul { margin: 0; }
+
+	#mobile-menu li a {
+		position: relative;
+		display: block;
+		padding: 15px 25px;
+		border-top: 1px solid #e0e0e0;
+		color: #fff;
+		text-align: left;
+		text-decoration: none;
+	}
+	
+	#mobile-menu > li > a { 
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	
+	#mobile-menu ul a { padding-left: 45px; }
+	
+	#mobile-menu ul li ul a  { padding-left: 65px; }
+	
+	#mobile-menu .mobile-menu-submenu-arrow {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 70px;
+		height: 100%;
+		border-left: 1px solid #e0e0e0;
+		color: #fff;
+		font-size: 20px;
+		line-height: 50px;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	#mobile-menu .mobile-menu-submenu-arrow:hover { background-color: #252525; }
+	
+	#mobile-menu li a:hover {}
+	
+	#mobile-menu { display: none; }
+
+/* ==========================================================================
+   =Mobile menu trigger
+   ========================================================================== */
+				
+	#mobile-menu-trigger { 
+		float: right;
+		display: none;
+		font-size: 32px;
+	}
+
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		#mobile-menu-trigger { 
+			display: block;
+			margin-top: 10px;
+			margin-right: 0;
+		}	
+
+	}
+
+	@media (max-width: 767px) {
+
+		#mobile-menu-trigger { 
+			position: absolute;
+			top: 15px;
+			right: 5px;
+			display: block;
+			padding: 10px;
+			margin-top: 0;
+		}
+
+	}
+
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+		#mobile-menu-trigger {}
+	
+	}		
+		
+/* ==========================================================================
+   =Custom search form 
+   ========================================================================== */
+	
+	#custom-search-button + nav { margin-right: 30px; }
+	
+	#custom-search-button { 
+		position: absolute;
+		top: 50px;
+		right: 15px;
+		display: block;
+		width: 16px;
+		height: 18px;
+		background: url(../images/bg-search.png) no-repeat center center;
+	}
+	 
+	#custom-search-form {
+		position: relative;
+		z-index: 1025;
+		display: none;
+		background-color: #e0e0e0;
+		text-align: center;
+	}
+	
+	#custom-search-submit { display: none; }
+	
+	#custom-search-form #s {
+		width: 920px;
+		padding: 15px 15px 15px 0;
+		border: none;
+		margin: 0 auto;
+		background-color: transparent;
+	}
+	
+	#custom-search-form a.close {
+		font-size: 18px;
+		text-decoration: none;
+	}
+	
+	@media (min-width: 1200px) {
+		
+		#custom-search-form #s { width: 1120px; }
+		
+	}
+
+	@media (min-width: 768px) and (max-width: 991px) {
+		
+		#custom-search-form #s { width: 700px; }
+
+		#custom-search-button {
+			top: 53px;
+			right: 65px; 
+		}
+		
+	}
+	
+	@media (max-width: 767px) {
+
+		/**
+		 * Hide search on mobile
+		 */
+		 
+		/**
+		 * 1. !important is needed to overwrite the display:block added by the js
+		 */ 
+	
+		#custom-search-form { 
+			display: none !important; /* 1 */
+		}
+		
+		#custom-search-button { display: none; }
+		
+	}
+
+/* ==========================================================================
+   =Sticky Header
+   ========================================================================== */
+
+	@media (min-width: 1025px) {
+		
+		/**
+		 * 1. The height of the #header-wrap should be increased or decreased to accommodate the logo
+		 */
+		 
+		#header-wrap {
+			position: relative;
+			height: 100px;/* 1 */
+		}
+		
+		#header {
+			position: absolute;
+			top: 0; 					
+			right: 0;
+			left: 0;
+			margin: 0 auto; 
+			
+		}
+		
+		/**
+		 * 1. The z-index has to be 1020 so it is bigger than the back to top buttons z-index that is 1010
+		 */
+		
+		#header.stuck {
+			position: fixed;
+			z-index: 1020; /* 1 */
+			top: 0;
+			width: 100%;
+			padding: 10px 0 0 0;
+			border-bottom: 1px solid #85c334;
+			margin: 0 auto;
+			box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);			
+			background-color: #fff;
+			-webkit-transition: padding 0.3s;
+					transition: padding 0.3s;
+		}
+		
+		#header.stuck #logo { padding:0px; }
+		
+		#header.stuck #logo img { width:80%; height:80%; }
+		
+		#header.stuck .sf-menu > li > a,
+		#header.stuck .sf-menu > li.dropdown > a { padding: 10px 15px 11px; }
+		
+		#header.stuck .sf-mega { margin-top: 0; }
+
+		#header.stuck .sf-arrows .sf-with-ul:after { margin-top: -3px; }	
+		#header.stuck .sf-arrows ul .sf-with-ul:after { margin-top: 6px; }	
+	
+		#header.stuck #custom-search-button { top: 31px; }
+		
+		#header.stuck .uppertoplink { padding-top: 0%;}
+		
+		
+		#header.stuck a.toplink{float:right; padding: 2px 15px 2px 15px; background: #007713;  color: #fff;  border-radius: 5px; text-decoration: none;}
+	#header.stuck a.toplink:hover{float:right; padding: 2px 15px 2px 15px; background: #252435;  color: #fff;  border-radius: 5px; text-decoration: none;}
+		
+		.custom-search-form-sticky {
+			position: fixed !important;
+			top: 106px;
+			left: 0;
+			right: 0;
+		}
+	
+	}
+	
+/* ==========================================================================
+   =Content
+   ========================================================================== */
+   	
+	#content {}
+
+/* ==========================================================================
+   =Page Header
+   ========================================================================== */
+   	
+	#page-header { 
+		padding: 30px 0;
+		margin-bottom: 50px;
+		background: #252525 no-repeat center center;
+		color: #fff;
+		text-align: center; 
+	}
+	
+	#page-header h3 { 
+		margin-bottom: 0;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+
+/* ==========================================================================
+   =Fullwidth Section
+   ========================================================================== */
+   
+    /**
+ 	 * Full width section
+ 	 *
+	 * 1. background-image must be supplied using inline css as it is different for every .fullwidth-section
+	 *
+	 */
+	 
+   .fullwidth-section {
+		position: relative;
+		overflow: hidden;
+		z-index: 0;	
+		padding: 60px 0;
+		margin-bottom: 100px;
+		background-color: #f8f8f8;
+		background-attachment: scroll;
+		background-repeat: no-repeat; /* 1 */ 
+		background-position: 50% 0;		
+	}
+
+	.fullwidth-section-content {
+		position: relative;
+		z-index: 3;
+	}
+   
+   	.fullwidth-section-overlay {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-repeat: repeat;
+		background-position: 0 0;	
+	}
+	
+	.fullwidth-section-video {
+		position: absolute;
+		overflow: hidden;
+		z-index: 1;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.yt-player { display: none; }
+	
+	/**
+ 	 *
+	 * 1. We add background-size cover so the parallax looks ok if you provide smaller images
+	 *
+	 */
+	
+	.parallax.parallax-enabled { 
+		background-attachment: fixed !important;
+		-webkit-background-size: cover;
+				background-size: cover;	/* 1 */
+	}
+	
+	.horizontal-parallax { background-repeat: repeat-x; }
+	
+	.animated-parallax { background-repeat: repeat-x; }
+	
+	@media (max-width: 767px) {
+
+		.fullwidth-section {
+			-webkit-background-size: cover;
+					background-size: cover;		
+		}
+		
+	}
+	
+/* ==========================================================================
+   =Footer Top
+   ========================================================================== */
+
+	#footer-top {
+		background-color: #343434;
+		color: #fff;
+	}
+	
+	#footer-top a { color: #fff; }
+	#footer-top a:hover { color: #85c334; }
+	
+	#footer-top-widget-area-1 {}
+	#footer-top-widget-area-2 {}
+	#footer-top-widget-area-3 {}
+	#footer-top-widget-area-4 {}
+   
+/* ==========================================================================
+   =Footer
+   ========================================================================== */		
+	
+	#footer { 
+		padding: 50px 0;
+		background-color: #252525;
+		color: #727272;
+	}
+	
+	#footer a { color: #727272; }
+	#footer a:hover { color: #85c334; }
+	
+	#footer-widget-area-1 {}
+	#footer-widget-area-2 {}
+	#footer-widget-area-3 {}
+	#footer-widget-area-4 {}
+	
+	@media (max-width: 767px) {
+		
+		#footer-widget-area-1 + #footer-widget-area-2 { margin-top: 60px; }
+		#footer-widget-area-2 + #footer-widget-area-3 { margin-top: 60px; }
+		#footer-widget-area-3 + #footer-widget-area-4 { margin-top: 60px; }
+		
+	}
+	
+/* ==========================================================================
+   =Footer Bottom
+   ========================================================================== */	
+  
+	#footer + #footer-bottom { padding-top:10px; }
+	
+	#footer-bottom { 
+		padding: 60px 0;	
+		background-color: #252525;
+		color: #343434;
+	}
+	
+	#footer-bottom a { color: #343434; }
+	#footer-bottom a:hover { color: #85c334; }
+	
+	#footer-bottom-widget-area-1 { color:#fff;}
+	#footer-bottom-widget-area-2 {}
+	#footer-bottom-widget-area-3 {}
+	#footer-bottom-widget-area-4 {}
+	
+/* ==========================================================================
+   =Back to top
+   ========================================================================== */
+
+	#back-to-top {
+		position: fixed;
+		z-index: 1010;
+		right: -40px;
+		bottom: 20px;
+		width: 40px;
+		height: 40px;
+		background-color: #252525;
+		color: #fff;
+		font-size: 24px;
+		text-align: center;					
+		opacity: 0.5;
+		cursor: pointer;
+		text-decoration: none;
+		-webkit-transition: all 0.4s ease 0s;
+				transition: all 0.4s ease 0s;
+	}
+	
+	#back-to-top i {
+		font-size: 24px;
+		line-height: 40px;
+		font-weight: normal;
+		vertical-align: top;
+		-webkit-transition: all 0.4s ease 0s;
+				transition: all 0.4s ease 0s;
+	}
+	
+	#back-to-top:hover { background-color: rgba(0, 0, 0, 0.7); }
+	#back-to-top:hover i { color: #fff; }
+	#back-to-top.visible { right: 40px; }
+	#back-to-top.gone { right: -40px; }	
+
+/* ==========================================================================
+   =Misc
+   ========================================================================== */
+   
+	.javascript-required,
+	.modern-browser-required {
+	    padding: 15px 0;
+		background-color: #d50f25;
+		color: #fff;
+		font-weight: 700;
+		text-align: center;
+	}
+	

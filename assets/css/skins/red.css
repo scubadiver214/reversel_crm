@@ -1,0 +1,1606 @@
+/**
+ * Name: red.css
+ *
+ * -
+ *
+ * The red color scheme for the template
+ *
+ */
+ 
+ /* ==========================================================================
+   =Typography
+   ========================================================================== */
+   	 
+	body {
+		background-color: #fff;
+		color: #252525;
+	}
+	
+	@media (max-width: 767px) {
+
+		body { 
+			background-color: #fff; 
+		}
+		
+	}	
+		
+	h1 a, 
+	h2 a, 
+	h3 a, 
+	h4 a, 
+	h5 a, 
+	h6 a { 
+		color: #252525;
+	}
+	
+	h1 a:hover, 
+	h2 a:hover, 
+	h3 a:hover, 
+	h4 a:hover, 
+	h5 a:hover, 
+	h6 a:hover { 
+		color: #fe2c45;	
+	}
+	
+	abbr[title] {  
+		border-bottom: 1px dotted #8d8c8c; 
+	}
+	
+	hr { 
+		border: solid #e0e0e0; 
+	}
+	
+	code { 
+		border: 1px solid #e0e0e0;
+		background-color: #f8f8f8;  
+		color: #d50f25;  
+	}
+	
+	pre { 
+		border: 1px solid #e0e0e0;
+		background-color: #f8f8f8; 
+	}
+	
+	mark,
+	ins {
+		border: 1px solid #e0e0e0;
+		background-color: #f8f8f8; 
+	}
+
+	.hr { 
+		border-top: 1px solid #e0e0e0;  
+	}
+	
+	.text-highlight { color: #fe2c45; }
+
+	.mute{ color: #8d8c8c; }
+
+/* ==========================================================================
+   =Links
+   ========================================================================== */
+	
+	a, 
+	a:visited { 
+		color: #fe2c45; 
+	}
+	
+	a:active {
+ 		background: transparent;
+	}	
+	
+/* ==========================================================================
+   =Lists
+   ========================================================================== */
+	
+/* =Custom lists
+   ========================================================================== */	
+	
+	ul.arrow li:before {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+
+/* ==========================================================================
+   =Tables
+   ========================================================================== */
+
+	table,
+	th,
+	td { border: 1px solid #e0e0e0; }
+	
+	/* Custom Tables */
+	
+	.options-table tr td {
+		border-bottom: 10px solid #fff;
+		background-color: #ffaeb9;
+	}
+	
+	.options-table i {
+		color: #fe2c45;
+	}
+	
+	@media (max-width: 480px) {
+		
+		.options-table tr td:last-child { border-bottom: 10px solid #fff; }
+	  
+	}
+	
+/* ==========================================================================
+   =Forms
+   ========================================================================== */
+
+	fieldset legend {
+		background: #fff;								
+	}
+	
+	::-moz-placeholder,
+	::-webkit-input-placeholder,
+	:-ms-input-placeholder {
+		color: #8d8c8c;
+	}
+	
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="week"],
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="color"],
+	textarea {
+		border: 2px solid #e0e0e0;
+	}
+
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	input[type="date"]:focus,
+	input[type="datetime"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="month"]:focus,
+	input[type="week"]:focus,
+	input[type="email"]:focus,
+	input[type="number"]:focus,
+	input[type="search"]:focus,
+	input[type="tel"]:focus,
+	input[type="time"]:focus,
+	input[type="url"]:focus,
+	input[type="color"]:focus,
+	textarea:focus {
+		border-color: #bbb;
+	}
+
+	input[type="text"]:disabled,
+	input[type="password"]:disabled,
+	input[type="date"]:disabled,
+	input[type="datetime"]:disabled,
+	input[type="datetime-local"]:disabled,
+	input[type="month"]:disabled,
+	input[type="week"]:disabled,
+	input[type="email"]:disabled,
+	input[type="number"]:disabled,
+	input[type="search"]:disabled,
+	input[type="tel"]:disabled,
+	input[type="time"]:disabled,
+	input[type="url"]:disabled,
+	input[type="color"]:disabled,
+	textarea:disabled {
+		background-color: #f8f8f8;
+	}
+
+	input[type="text"][disabled],
+	input[type="text"][readonly],
+	fieldset[disabled] input[type="text"],
+	input[type="password"][disabled],
+	input[type="password"][readonly],
+	fieldset[disabled] input[type="password"],
+	input[type="date"][disabled],
+	input[type="date"][readonly],
+	fieldset[disabled] input[type="date"],
+	input[type="datetime"][disabled],
+	input[type="datetime"][readonly],
+	fieldset[disabled] input[type="datetime"],
+	input[type="datetime-local"][disabled],
+	input[type="datetime-local"][readonly],
+	fieldset[disabled] input[type="datetime-local"],
+	input[type="month"][disabled],
+	input[type="month"][readonly],
+	fieldset[disabled] input[type="month"],
+	input[type="week"][disabled],
+	input[type="week"][readonly],
+	fieldset[disabled] input[type="week"],
+	input[type="email"][disabled],
+	input[type="email"][readonly],
+	fieldset[disabled] input[type="email"],
+	input[type="number"][disabled],
+	input[type="number"][readonly],
+	fieldset[disabled] input[type="number"],
+	input[type="search"][disabled],
+	input[type="search"][readonly],
+	fieldset[disabled] input[type="search"],
+	input[type="tel"][disabled],
+	input[type="tel"][readonly],
+	fieldset[disabled] input[type="tel"],
+	input[type="time"][disabled],
+	input[type="time"][readonly],
+	fieldset[disabled] input[type="time"],
+	input[type="url"][disabled],
+	input[type="url"][readonly],
+	fieldset[disabled] input[type="url"],
+	input[type="color"][disabled],
+	input[type="color"][readonly],
+	fieldset[disabled] input[type="color"],
+	textarea[disabled],
+	textarea[readonly],
+	fieldset[disabled] textarea {
+		background-color: #f8f8f8;
+	}
+	
+	select {
+		border: 1px solid #e0e0e0;
+		background-color: #fff;
+		color: #252525;
+	}
+
+	select:disabled {
+		background-color: #f8f8f8;
+	}
+	
+	select:focus { border-color: #bbb; }
+	
+	button,
+	input[type="reset"],
+	input[type="submit"],
+	input[type="button"] {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	input[type="reset"]:hover,
+	input[type="submit"]:hover,
+	input[type="button"]:hover { background-color: #252525; }
+	
+/* ==========================================================================
+   =Wrap
+   ========================================================================== */
+
+	#wrap {
+		background-color: #fff;
+	}
+	
+/* ==========================================================================
+   =Menu 
+   ========================================================================== */
+
+/* =Menu Skin
+   ========================================================================== */
+	
+	.sf-menu a {
+		color: #252525; 
+	}
+	
+	.sf-menu > li > a,
+	.sf-menu > li.dropdown > a {
+		color: #252525;
+	}
+	
+	.sf-menu > li.current > a,
+	.sf-menu li.sfHover > a,
+	.sf-menu a:hover,
+	.sf-menu li.sfHover a:hover {
+		color: #fe2c45;
+	}
+
+/* =DropDown
+   ========================================================================== */
+   
+	.sf-menu li.dropdown ul {
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 2px solid #fe2c45;	
+		background-color: #fff;			
+	}	
+		
+/* =Mega Menu Section
+   ========================================================================== */
+	
+	.sf-mega {
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 2px solid #fe2c45;
+		background-color: #fff;
+	}
+	
+/* =Menu Arrows
+   ========================================================================== */
+	
+	.sf-arrows .sf-with-ul:after {
+		border: 4px solid transparent;
+		border-top-color: #8d8c8c;
+	}
+		
+	.sf-arrows > li > .sf-with-ul:focus:after,
+	.sf-arrows > li:hover > .sf-with-ul:after,
+	.sf-arrows > .sfHover > .sf-with-ul:after { border-top-color: rgba(0, 0, 0, 0.7); }
+		
+	.sf-arrows ul .sf-with-ul:after {
+		border-color: transparent;
+		border-left-color: #8d8c8c;
+	}
+	
+	.sf-arrows ul li > .sf-with-ul:focus:after,
+	.sf-arrows ul li:hover > .sf-with-ul:after,
+	.sf-arrows ul .sfHover > .sf-with-ul:after { border-left-color: rgba(0, 0, 0, 0.7); }
+	
+/* ==========================================================================
+   =Mobile Menu 
+   ========================================================================== */
+			
+	#mobile-menu {
+		border-bottom: 1px solid #e0e0e0;
+		background-color: #fe2c45;
+	}
+	
+	#mobile-menu .sf-mega {
+		background-color: transparent;
+	}
+
+	#mobile-menu li a {
+		border-top: 1px solid #e0e0e0;
+		color: #fff;
+	}
+	
+	#mobile-menu .mobile-menu-submenu-arrow {
+		border-left: 1px solid #e0e0e0;
+		color: #fff;
+	}
+	
+	#mobile-menu .mobile-menu-submenu-arrow:hover { background-color: #252525; }		
+		
+/* ==========================================================================
+   =Custom search form 
+   ========================================================================== */
+	
+	#custom-search-button { 
+		background: url(../../images/bg-search.png) no-repeat center center;
+	}
+	 
+	#custom-search-form {
+		background-color: #e0e0e0;
+	}
+	
+	#custom-search-form #s {
+		background-color: transparent;
+	}
+
+/* ==========================================================================
+   =Sticky Header
+   ========================================================================== */
+
+	@media (min-width: 1025px) {
+		
+		#header.stuck {
+			border-bottom: 1px solid #fe2c45;
+			box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);			
+			background-color: #fff;
+		}
+	
+	}
+
+/* ==========================================================================
+   =Page Header
+   ========================================================================== */
+   	
+	#page-header { 
+		background: #252525 no-repeat center center;
+		color: #fff;
+	}
+
+/* ==========================================================================
+   =Fullwidth Section
+   ========================================================================== */
+
+   .fullwidth-section {
+		background-color: #f8f8f8;
+	}
+	
+/* ==========================================================================
+   =Footer Top
+   ========================================================================== */
+
+	#footer-top {
+		background-color: #343434;
+		color: #fff;
+	}
+	
+	#footer-top a { color: #fff; }
+	#footer-top a:hover { color: #fe2c45; }
+   
+/* ==========================================================================
+   =Footer
+   ========================================================================== */		
+	
+	#footer { 
+		background-color: #252525;
+		color: #727272;
+	}
+	
+	#footer a { color: #727272; }
+	#footer a:hover { color: #fe2c45; }
+	
+/* ==========================================================================
+   =Footer Bottom
+   ========================================================================== */	
+	
+	#footer-bottom { 
+		padding: 60px 0;	
+		background-color: #252525;
+		color: #343434;
+	}
+	
+	#footer-bottom a { color: #343434; }
+	#footer-bottom a:hover { color: #fe2c45; }
+	
+/* ==========================================================================
+   =Back to top
+   ========================================================================== */
+
+	#back-to-top {
+		background-color: #252525;
+		color: #fff;
+	}
+	
+	#back-to-top:hover { background-color: rgba(0, 0, 0, 0.7); }
+	#back-to-top:hover i { color: #fff; }
+
+/* ==========================================================================
+   =Misc
+   ========================================================================== */
+   
+	.javascript-required,
+	.modern-browser-required {
+		background-color: #d50f25;
+		color: #fff;
+	}
+	
+/* ==========================================================================
+   =Accordions and Toggles
+   ========================================================================== */
+
+/* =Accordion
+   ========================================================================== */
+
+	.accordion-item {
+		background-color: #f8f8f8;
+		color: #252525;
+	}
+	
+	a.accordion-item { color: #252525; }
+	
+	.accordion-item span { 
+		color: #fe2c45;
+	}
+	
+	.accordion-item:after {
+		background-color: #252525;
+		color: #fff;
+	}
+	
+	.accordion-item:hover,
+	.accordion-item.active {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.accordion-item:hover span,
+	.accordion-item.active span { color: #fff; }
+	
+/* =Toggle
+   ========================================================================== */
+
+	.toggle-item {
+		background-color: #f8f8f8;
+		color: #252525;
+	}
+	
+	a.toggle-item { color: #252525; }
+	
+	.toggle-item:after {
+		background-color: #252525;
+		color: #fff;
+	}
+	
+	.toggle-item:hover,
+	.toggle-item.active {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+
+/* ==========================================================================
+   =Alerts
+   ========================================================================== */
+
+	.alert {
+		border: 1px solid #e0e0e0;	
+	}
+	
+	.alert.info {
+		border: 1px solid #252525;
+		background-color: #252525;
+		color: #fff;
+	}
+	
+	.alert.success {
+		border: 1px solid #fe2c45;
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.alert.error {
+		border: 1px solid #d50f25;
+		background-color: #d50f25;
+		color: #fff;
+	}
+	
+	.alert.warning {
+		border: 1px solid #ffd24d;
+		background-color: #ffd24d;
+		color: #fff;
+	}
+
+/* ==========================================================================
+   =Boxes
+   ========================================================================== */
+
+	.box.box-style-1 {
+		border: 1px solid #e0e0e0;
+	}
+
+	.box.box-style-2 { 
+		background-color: #252525;
+		color: #fff;
+	}
+	
+/* ==========================================================================
+   =Buttons
+   ========================================================================== */
+
+/* =Default Button
+   ========================================================================== */
+   
+	.btn { 
+		background-color: #fe2c45;
+		color: #fff !important;
+	}
+	
+	.btn:hover { background-color: #252525; }
+
+/* ==========================================================================
+   =Callouts
+   ========================================================================== */
+
+	.callout {
+		background-color: #f1f1f1;
+	}
+	
+	.callout .callout-content > i {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+/* ==========================================================================
+   =Countdown
+   ========================================================================== */
+	
+	.countdown-section {
+		border: 10px solid #fe2c45;
+	}
+	
+	.countdown-section:after {
+		color: #fe2c45;
+	}
+	
+	.countdown-amount {
+		color: #fe2c45;
+	}
+   
+/* ==========================================================================
+   =Contact form
+   ========================================================================== */
+ 
+	
+	label.validation-error { color: #d50f25; }
+	
+	input.validation-error,
+	textarea.validation-error,
+	select.validation-error { border: 1px solid #e0e0e0; }
+
+/* ==========================================================================
+   =Dividers
+   ========================================================================== */
+	
+	.divider.single-line { border-top: 1px solid #e0e0e0; }
+	
+	.divider.double-line { border-top: 4px double #e0e0e0; }
+	
+	.divider.shadow {
+		background-color: #edf1f0;
+		box-shadow: 0 0 30px 20px rgba(0, 0, 0, 0.07);
+	}
+
+/* ==========================================================================
+   =Dropcaps
+   ========================================================================== */
+	
+	.dropcap.dropcap-square {
+		background-color: #fe2c45;		
+		color: #ffffff;
+		
+	}
+	
+	.dropcap.dropcap-circle {
+		background-color: #fe2c45;		
+		color: #ffffff;
+	}
+	
+/* ==========================================================================
+   =Features list
+   ========================================================================== */
+	
+	.features-list li .features-list-content {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.features-list li .btn { 
+		background-color: #fff;
+		color: #fe2c45 !important;
+	}
+	
+	.features-list li .btn:hover { background-color: #252525; }
+	
+	.features-list li:hover .features-list-content {
+		background-color: #fe435a;
+	}
+	
+	.features-list li .features-list-content:before,
+	.features-list li .features-list-content:after {
+		border-top: 80px solid transparent; 
+		border-bottom: 80px solid transparent; 
+	}
+	
+	.features-list li .features-list-content:before {
+		border-left: 80px solid #fe435a;
+	}
+	
+	.features-list li .features-list-content:after {
+		border-right: 80px solid #fe435a;
+	}
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+		
+		.features-list li .features-list-content:before,
+		.features-list li .features-list-content:after {
+			border-right: 100px solid transparent; 
+			border-left: 100px solid transparent; 
+		}
+		
+		.features-list li .features-list-content:before {
+			border-top: 100px solid #fe435a;
+		}
+		
+		.features-list li .features-list-content:after {
+			border-bottom: 100px solid #fe435a;
+		}
+		
+	}
+	
+	@media (max-width: 767px) {
+		
+		.features-list li .features-list-content:before,
+		.features-list li .features-list-content:after {
+			border-right: 100px solid transparent; 
+			border-left: 100px solid transparent; 
+		}
+		
+		.features-list li .features-list-content:before {
+			border-top: 100px solid #fe435a;
+		}
+		
+		.features-list li .features-list-content:after {
+			border-bottom: 100px solid #fe435a;
+		}
+		
+	}
+
+/* ==========================================================================
+   =Headlines
+   ========================================================================== */
+	
+	.headline:before {
+		color: #fe2c45;
+	}
+	
+	.headline:after {
+		border-top: 2px solid #fe2c45;
+	}
+	
+	.headline h5 {
+		color: #8d8c8c;
+	}
+	
+	.headline.error h1 {
+		color: #fe2c45;
+	}
+	
+/* ==========================================================================
+   =Icon Boxes
+   ========================================================================== */
+
+/* =Icon Box 1
+   ========================================================================== */
+		
+	.icon-box-1 > i { 
+		color: #fe2c45;  
+	}
+	
+	.icon-box-1:hover > i { color: #252525; }
+
+/* =Icon Box 2
+   ========================================================================== */
+		
+	.icon-box-2 > i {
+		background-color: #edf1f0;
+		color: #252525; 
+	}
+	
+	.icon-box-2 > i:after {
+		background-color: #fe2c45;
+	}
+	
+	.icon-box-2:hover > i {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+
+/* =Icon Box 3
+   ========================================================================== */
+	
+	.icon-box-3 > i {  
+		color: #fe2c45;
+	}
+
+/* =Icon Box 4
+   ========================================================================== */
+	
+	.icon-box-4 > i { 	 
+		color: #fe2c45;
+	}
+	
+/* =Icon Box 5
+   ========================================================================== */
+		
+	.icon-box-5 > i {
+		background-color: #252525;
+		color: #fff; 
+	}
+	
+	.icon-box-5:hover {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.icon-box-5:hover > i {
+		background-color: #fff;
+		color: #fe2c45;
+	}
+	
+	.icon-box-5:hover a { color: #fff; }
+	
+/* =Icon Box 6
+   ========================================================================== */
+   
+	.icon-box-6 { 
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.icon-box-6 a { color: #fff; }
+	.icon-box-6 a:hover { color: #252525; }
+	
+	.icon-box-6 h3:after {
+		border-bottom: 2px solid #fff;
+	}
+
+/* ==========================================================================
+   =Image Box
+   ========================================================================== */
+
+	.image-box {
+		border: 1px solid #e0e0e0;
+		box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.03);
+	}
+	
+/* ==========================================================================
+   =Info box
+   ========================================================================== */
+   	
+	.info-box {
+		background-color: #f8f8f8; 
+	}
+
+/* ==========================================================================
+   =Modal window
+   ========================================================================== */	
+   
+	.white-popup {
+		background: #fff;
+	}
+	
+/* ==========================================================================
+   =Our Process
+   ========================================================================== */
+
+/* =Horizontal process
+   ========================================================================== */
+	
+	.horizontal-process-builder:before {
+		border-top: 1px solid #e0e0e0;
+	}
+	
+	.horizontal-process-builder li i,
+	.horizontal-process-builder li h1 {
+		border: 1px solid #e0e0e0;
+		outline: 5px solid #fff;
+		background-color: #fff;
+		color: #252525;
+	}
+	
+	.horizontal-process-builder li:hover i,
+	.horizontal-process-builder li:hover h1 {
+		border-color: #fe2c45;
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+/* =Vertical process
+   ========================================================================== */
+	
+	.vertical-process-builder:before {
+		border-left: 1px solid #e0e0e0;
+	}
+	
+	.vertical-process-builder li i,
+	.vertical-process-builder li h1 {
+		border: 1px solid #e0e0e0;
+		outline: 10px solid #fff;
+		background-color: #fff;
+		color: #252525;
+	}
+	
+	.vertical-process-builder li:hover i,
+	.vertical-process-builder li:hover h1 { 
+		border-color: #fe2c45;
+		background-color: #fe2c45;
+		color: #fff;
+	}
+
+/* ==========================================================================
+   =Pie charts
+   ========================================================================== */
+	
+	.pie-chart .pie-chart-custom-text {
+		color: #8d8c8c;
+	}
+	
+/* ==========================================================================
+   =Pricing Tables
+   ========================================================================== */
+
+	.pricing-table {
+		background-color: #f8f8f8;
+		color: #252525;
+	}
+
+	.pricing-table-header h1 {
+		color: #252525;
+	}
+	
+	.pricing-table-header h1 small {
+		color: #fe2c45;
+	}
+
+	.pricing-table-header h5 {
+		background-color: #fe2c45;
+		color: #fff;
+	}			
+	
+	.pricing-table-offer ul li { 
+		border-top: 1px solid #e0e0e0; 
+	}
+	
+	.pricing-table-offer ul li:last-child {
+		border-bottom: 1px solid #e0e0e0; 
+	}
+	
+	.pricing-table:hover {
+		background-color: #FE6D80;
+		color: #fff;
+	}
+	
+	.pricing-table:hover .pricing-table-header h5 { background-color: #252525; }
+	
+	.pricing-table:hover .pricing-table-header h1 { color: #252525 }
+	.pricing-table:hover .pricing-table-header h1 small { color: #fff }
+
+/* ==========================================================================
+   =Progress Bar
+   ========================================================================== */
+	
+	.progress-bar {
+		background-color: #252525;
+	}
+	
+	.progress-bar .progress-bar-outer {
+		background-color: #fe2c45;
+	}
+
+/* ==========================================================================
+   =Revolution Slider
+   ========================================================================== */
+
+/* =Rev Slider Pager
+   ========================================================================== */
+	   
+	.tp-bullets.default .tp-bullet {
+		background: #fff;
+	}
+
+	.tp-bullets.default .tp-bullet:hover,
+	.tp-bullets.default .tp-bullet.selected { background: #fe2c45; }
+
+/* =Rev Slider navigation
+   ========================================================================== */
+
+	.tp-leftarrow.default,
+	.tp-rightarrow.default {
+		background-color: #fff;
+	}
+	
+	.tp-leftarrow.default:before,
+	.tp-rightarrow.default:before {
+		color: #252525;
+	}
+
+	.tp-leftarrow.default:hover:before,
+	.tp-rightarrow.default:hover:before { 
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+/* =Rev Slider typography
+   ========================================================================== */
+   	
+	.tp-caption.subtitle-2 {
+		color: #fe2c45;
+	}
+	
+	.tp-caption.subtitle {
+		color: #fff;
+	}
+	
+	.tp-caption.title {
+		color: #fff;
+	}
+	
+	.tp-caption.title-2 {
+		color: #252525;
+	}
+	
+	.tp-caption.title-3 {
+		color: #252525;
+	}
+	
+	.tp-caption.text {
+		color: #8d8c8c;
+	}
+	
+	.tp-caption.text-2 {
+		color: #252525;
+	}
+	
+/* ==========================================================================
+   =Services list
+   ========================================================================== */		
+	
+	.services-list li:nth-child(1) .icon-box-6 { background-color: #fe2c45; }
+	.services-list li:nth-child(2) .icon-box-6 { background-color: #fe435a; }
+	.services-list li:nth-child(3) .icon-box-6 { background-color: #fe5469; }
+	.services-list li:nth-child(4) .icon-box-6 { background-color: #fe677a; }
+
+/* ==========================================================================
+   =Social Media
+   ========================================================================== */
+
+	a.social-icon {
+		color: #252525;
+	}
+	
+	a.facebook-icon:hover { color: #0e59a0 !important; }
+	a.twitter-icon:hover { color: #0ea4ff !important; }
+	a.dribble-icon:hover { color: #ea73a0 !important; }
+	a.pinterest-icon:hover { color: #d73532 !important; }
+	a.googleplus-icon:hover { color: #282927 !important; }
+	a.tumblr-icon:hover { color: #586980 !important; }
+	a.instagram-icon:hover { color: #82685a !important; }
+	a.rss-icon:hover { color: #f79638 !important; }
+	a.linkedin-icon:hover { color: #018faf !important; }
+	a.skype-icon:hover { color: #00b0f6 !important; }
+	a.flickr-icon:hover { color: #0061db !important; }
+	a.vimeo-icon:hover { color: #63879c !important; }
+	a.github-icon:hover { color: #3b3b3b !important; }
+	a.youtube-icon:hover { color: #cc181e !important; }
+	a.windows-icon:hover { color: #6dc2e9 !important; }
+	a.dropbox-icon:hover { color: #007ee5 !important; }
+	a.xing-icon:hover { color: #026566 !important; }	
+	a.adn-icon:hover { color: #1ea076 !important; }
+	a.android-icon:hover { color: #98cb02 !important; }
+	a.apple-icon:hover { color: #000000 !important; }
+	a.behance-icon:hover { color: #2d9ad2 !important; }
+	a.bitbucket-icon:hover { color: #214f81 !important; }
+	a.bitcoin-icon:hover { color: #f7931b !important; }
+	a.codepan-icon:hover { color: #000000 !important; }
+	a.css3-icon:hover { color: #3289ce !important; }
+	a.delicious-icon:hover { color: #3399fe !important; }
+	a.deviantart-icon:hover { color: #c8da30 !important; }
+	a.digg-icon:hover { color: #0080c2 !important; }
+	a.drupal-icon:hover { color: #0077b9 !important; }
+	a.empire-icon:hover { color: #000000 !important; }
+	a.foursquare-icon:hover { color: #daecb0 !important; }
+	a.git-icon:hover { color: #f34f29 !important; }
+	a.gitti-icon:hover { color: #634c3e !important; }
+	a.hacker-news-icon:hover { color: #f18642 !important; }
+	a.html5-icon:hover { color: #e54c1f !important; }
+	a.joomla-icon:hover { color: #016fb9 !important; }
+	a.jsfiddle-icon:hover { color: #4679a4 !important; }
+	a.linux-icon:hover { color: #fece0e !important; }
+	a.maxcdn-icon:hover { color: #f36f20 !important; }
+	a.openid-icon:hover { color: #fe6101 !important; }
+	a.pagelines-icon:hover { color: #3783e3 !important; }
+	a.pied-piper-icon:hover { color: #0c7b48 !important; }
+	a.qq-icon:hover { color: #23286c !important; }
+	a.rebel-icon:hover { color: #000000 !important; }
+	a.reddit-icon:hover { color: #cee3f8 !important; }
+	a.renren-icon:hover { color: #0d81e4 !important; }
+	a.share-icon:hover { color: #252525 !important; }
+	a.slack-icon:hover { color: #453744 !important; }
+	a.soundcloud-icon:hover { color: #fe4e00 !important; }
+	a.spotify-icon:hover { color: #80bb41 !important; }
+	a.stack-exchange-icon:hover { color: #265a93 !important; }
+	a.stackoverflow-icon:hover { color: #fea501 !important; }
+	a.steam-icon:hover { color: #191919 !important; }
+	a.stumbleupon-icon:hover { color: #f04f23 !important; }
+	a.tencent-weibo-icon:hover { color: #0063a7 !important; }
+	a.trello-icon:hover { color: #226784 !important; }
+	a.vine-icon:hover { color: #00b081 !important; }
+	a.vk-icon:hover { color: #50769d !important; }
+	a.wechat-icon:hover { color: #a4dc31 !important; }
+	a.weibo-icon:hover { color: #d82828 !important; }
+	a.wordpress-icon:hover { color: #454442 !important; }
+	a.yahoo-icon:hover { color: #4b04a8 !important; }
+
+/* ==========================================================================
+   =Tabs
+   ========================================================================== */
+
+/* =Horizontal tabs
+   ========================================================================== */
+	
+	.tabs-container .tabs-menu li a { 
+		background-color: #f8f8f8;
+		color: #252525;
+	}
+	
+	.tabs-container .tabs-menu li a:hover,
+	.tabs-container .tabs-menu li.active a {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	@media (max-width: 767px) {
+	
+		.tabs-container .tabs-menu li a { 
+			border: 1px solid #e1e1e1;
+		}
+		
+		.tabs-container .tabs-menu li:first-child a { border-top: 1px solid #e1e1e1; }
+		
+		.tabs-container .tabs-menu li.active a {  
+			background-color: #fe2c45;
+			color: #fff; 
+		}
+	  
+	}
+	
+/* ==========================================================================
+   =Testimonials
+   ========================================================================== */
+
+	.testimonial {
+		background-color: #edf1f0;
+		color: #252525;
+	}
+	
+	.testimonial > h5 span {
+		color: #fe2c45;
+	}
+	
+/* ==========================================================================
+   =Team Member
+   ========================================================================== */
+   
+	.team-member h4 {
+		color: #252525;
+	}
+	
+	.team-member h5 {
+		color: #fe2c45; 
+	}
+	
+	.team-member:hover {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.team-member:hover a,
+	.team-member:hover h5 { color: #fff; }
+	
+	.team-member:hover h4 { color: #252525; }
+	
+/* ==========================================================================
+   =Portfolio Item
+   ========================================================================== */
+	
+	.portfolio-item-overlay {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	
+	.portfolio-item-overlay a { color: #fff; }		
+		
+	.portfolio-item-overlay-actions a {
+		color: #fff;
+	}
+
+	.portfolio-item-description h6 { color: #fe2c45; }
+	
+	.portfolio-item-overlay .portfolio-item-description {
+		color: #fff;
+	}
+	
+/* ==========================================================================
+   =Portfolio Filter
+   ========================================================================== */
+	
+	.portfolio-filter ul li a { 
+		color: #252525;
+	}
+	
+	.portfolio-filter ul li a:hover,
+	.portfolio-filter ul li a.active { color: #fe2c45; }
+
+/* ==========================================================================
+   =Portfolio Pagination
+   ========================================================================== */
+
+	.portfolio-pagination .page-numbers {
+		background-color: #edf1f0;
+		color: #252525;
+	}
+
+	.portfolio-pagination .page-numbers:hover,
+	.portfolio-pagination .page-numbers.current { 
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.portfolio-pagination .page-numbers.dots { 
+		background-color: transparent;
+		color: #252525;
+	}
+	
+/* ==========================================================================
+   =Bx Slider
+   ========================================================================== */
+
+/* =Bx Slider Pager
+   ========================================================================== */ 
+   
+	.bx-wrapper .bx-pager.bx-default-pager a, 
+	.bx-wrapper .bx-pager.bx-default-pager a:focus {
+		background: #252525;
+	}
+		
+	.bx-wrapper .bx-pager.bx-default-pager a:hover,
+	.bx-wrapper .bx-pager.bx-default-pager a.active { background: #fe2c45; }
+	
+/* =Bx Slider Dir Nav
+   ========================================================================== */ 
+   
+	.bx-wrapper .bx-prev {
+		background: #252525 url(../../images/left.png) no-repeat center center;
+	}
+
+	.bx-wrapper .bx-next {
+		background: #252525 url(../../images/right.png) no-repeat center center;
+	}
+	
+	.images-slider.alt .bx-wrapper .bx-pager.bx-default-pager a, 
+	.images-slider.alt .bx-wrapper .bx-pager.bx-default-pager a:focus { background: #f8f8f8; }
+	
+	.images-slider.alt .bx-wrapper .bx-pager.bx-default-pager a:hover,
+	.images-slider.alt .bx-wrapper .bx-pager.bx-default-pager a.active { background: #fe2c45; }
+	
+/* ==========================================================================
+   =Fullwidth Section
+   ========================================================================== */
+	
+	.fullwidth-section.custom-color-selected {
+		background-color: #333;
+		color: #fff;
+	}
+	
+	.fullwidth-section.custom-color-selected a, 
+	.fullwidth-section.custom-color-selected .icon-box-1:hover > i, 
+	.fullwidth-section.custom-color-selected .team-member h4, 
+	.fullwidth-section.custom-color-selected .portfolio-pagination .page-numbers.dots, 
+	.fullwidth-section.custom-color-selected .ewf_widget_latest_posts ul li .title { color: inherit; }
+	
+	.fullwidth-section.custom-color-selected a:hover { color: #fe2c45; }
+	
+	.fullwidth-section.custom-color-selected .accordion-item, 
+	.fullwidth-section.custom-color-selected .toggle-item, 
+	.fullwidth-section.custom-color-selected .portfolio-pagination .page-numbers, 
+	.fullwidth-section.custom-color-selected .callout { color: #252525; }
+	
+	.fullwidth-section.custom-color-selected .accordion-item:hover, 
+	.fullwidth-section.custom-color-selected .accordion-item.active, 
+	.fullwidth-section.custom-color-selected .toggle-item:hover, 
+	.fullwidth-section.custom-color-selected .toggle-item.active, 
+	.fullwidth-section.custom-color-selected .pricing-table .btn, 
+	.fullwidth-section.custom-color-selected .portfolio-pagination .page-numbers:hover,
+	.fullwidth-section.custom-color-selected .portfolio-pagination .page-numbers.current { color: #fff; }
+	
+	.fullwidth-section.custom-color-selected .bx-wrapper .bx-pager.bx-default-pager a, 
+	.fullwidth-section.custom-color-selected .bx-wrapper .bx-pager.bx-default-pager a:focus { background: #fff; }
+	
+	.fullwidth-section.custom-color-selected .bx-wrapper .bx-pager.bx-default-pager a:hover,
+	.fullwidth-section.custom-color-selected .bx-wrapper .bx-pager.bx-default-pager a.active { background: #fe2c45; }
+	
+	#bg-2 {
+		background-image: url(../../../content/backgrounds/1920x800-1.jpg);
+	}
+	
+	#bg-4 {
+		background-image: url(../../../content/backgrounds/1920x800-2.jpg);
+	}
+	
+	#bg-5 { background-color: #fe2c45; }
+	
+	#bg-6 {
+		background-image: url(../../../content/backgrounds/1920x800-3.jpg);
+	}
+	
+	#bg-8 {
+		background-image: url(../../../content/backgrounds/1920x800-4.jpg);
+	}
+	
+	#bg-9 {
+		background-image: url(../../../content/backgrounds/3180x500.jpg);
+	}
+	
+	#bg-11 {
+		background-image: url(../../../content/backgrounds/1920x1320.jpg);
+	}
+	
+	#bg-12 {
+		background-image: url(../../../content/backgrounds/3180x500.jpg);
+	}
+	
+	#bg-13 {
+		background-color: #fe2c45;
+	}
+	
+	#bg-14 {
+		background-image: url(../../../content/backgrounds/1920x1080-1.jpg);
+	}
+	
+	#bg-16 {
+		background-color: #fe2c45;
+	}
+	
+	#bg-17 {
+		background-image: url(../../../content/backgrounds/1920x1080-2.jpg);
+	}
+	
+	#bg-17:before {
+		background-color: #f8f8f8;
+	}
+	
+	#bg-18 {
+		background-image: url(../../../content/backgrounds/1920x1080-3.jpg);
+	}
+	
+	#bg-19 {
+		background-image: url(../../../content/backgrounds/1920x1080-4.jpg);
+	}
+	
+	#bg-20 {
+		background-color: #fe2c45;
+	}
+	
+	#bg-21 {
+		background-image: url(../../../content/backgrounds/1920x1080-5.jpg);
+	}
+	
+	#bg-22 {
+		background-image: url(../../../content/backgrounds/1920x1280.jpg);
+	}
+	
+	#bg-23 {
+		background-color: #0e0e0e;
+	}
+	
+/* ==========================================================================
+   =WordPress Default Classes
+   ========================================================================== */
+
+	/* Caption */
+
+	.caption-text,
+	.wp-caption-text {
+		color: #bbbbbb;
+	}
+
+	/* Gallery */
+
+	.gallery-caption {
+		color: #bbbbbb;
+	}
+
+/* ==========================================================================
+   =WordPress Post(s) 
+   ========================================================================== */
+   
+	.sticky {
+		border: 1px solid #e0e0e0; 
+	}
+	
+	.sticky-post {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+	.posted-on {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+/* ==========================================================================
+   =WordPress pagination and navigation
+   ========================================================================== */
+
+	.pagination .page-numbers {
+		background-color: #edf1f0;
+		color: #252525;
+	}
+
+	.pagination .page-numbers:hover,
+	.pagination .page-numbers.current { 
+		background-color: #fe2c45;
+		color: #fff;
+	}
+
+	.pagination .current {}
+	
+	.pagination .page-numbers.dots { 
+		background-color: transparent;
+		color: #252525;
+	}
+
+/* ==========================================================================
+   =WordPress Comments
+   ========================================================================== */
+
+	.comment-list .pingback,
+	.comment-list .trackback {
+		border-bottom: 1px solid #e1e1e1;
+	}
+	
+	.comment-meta a { color: #8d8c8c; }
+
+/* ==========================================================================
+   =WordPress Comments Navigation
+   ========================================================================== */
+
+	.comment-navigation {
+		border-top: 1px solid #e0e0e0;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	
+/* ==========================================================================
+   =WordPress Comment Form
+   ========================================================================== */	
+
+	.no-comments {
+		border-top: 1px solid #e0e0e0;
+	}
+
+	.required { color: #d50f25; }
+
+/* ==========================================================================
+   =WordPress Widgets
+   ========================================================================== */
+	
+/* =Widgets default
+   ========================================================================== */
+	
+	#footer .widget-title {
+		color: #fff;
+	}
+	
+/* =Search Widget
+   ========================================================================== */
+	
+	#searchsubmit {
+		background: #fe2c45 url(../../images/bg-search-2.png) no-repeat center center;
+	}
+	
+/* =Pages Widget
+   ========================================================================== */
+	
+	.widget_pages a {
+		color: #252525;
+	}
+	
+	.widget_pages a:before {
+		color: #fe2c45;
+	}
+	
+	.widget_pages a:hover {
+		color: #fe2c45;
+	}
+	
+/* =Archive Widget
+   ========================================================================== */
+	
+	.widget_archive a {
+		color: #252525;
+	}
+	
+	.widget_archive a:before {
+		color: #fe2c45;
+	}
+	
+	.widget_archive a:hover {
+		color: #fe2c45;
+	}
+	
+/* =Categories Widget
+   ========================================================================== */
+	
+	.widget_categories a {
+		color: #252525;
+	}
+	
+	.widget_categories a:before {
+		color: #fe2c45;
+	}
+	
+	.widget_categories a:hover {
+		color: #fe2c45;
+	}
+	
+/* =Meta Widget
+   ========================================================================== */
+	
+	.widget_meta a {
+		color: #252525;
+	}
+	
+	.widget_meta a:before {
+		color: #fe2c45;
+	}
+	
+	.widget_meta a:hover {
+		color: #fe2c45;
+	}
+	
+/* =Tag Cloud Widget
+   ========================================================================== */
+	
+	.widget_tag_cloud a:hover { 
+		color: #252525;
+	}
+	
+/* =Calendar Widget
+   ========================================================================== */
+	
+	#wp-calendar tbody a {
+		background-color: #fe2c45;
+		color: #fff;
+	}
+	
+/* =Nav Menu Widget
+   ========================================================================== */
+	
+	.widget_nav_menu a {
+		color: #252525;
+	}
+	
+	.widget_nav_menu a:before {
+		color: #fe2c45;
+	}
+	
+	.widget_nav_menu a:hover {
+		color: #fe2c45;
+	}
+	
+/* ==========================================================================
+   =WordPress Custom Widgets
+   ========================================================================== */
+	
+/* =EWF Contact Info widget
+   ========================================================================== */
+	
+	.ewf_widget_contact_info ul li a { color: #252525; }
+	
+/* =EWF Newsletter subscribe widget
+   ========================================================================== */
+	
+	#footer #newsletter-subscribe-form input[type="text"] {
+		border: 1px solid #727272;
+		background-color: transparent;
+		color: #727272;
+	}
+	
+	#footer #newsletter-subscribe-form input[type="submit"] {
+		background-color: transparent;
+		color: #fe2c45;
+	}
+	
+/* =EWF Latest posts widget
+   ========================================================================== */
+	
+	.ewf_widget_latest_posts ul li .title {
+		color: #252525;
+		font-weight: 700;
+	}	
+	
+	.ewf_widget_latest_posts ul li .title:hover {
+		color: #fe2c45;
+	}
+	
+	.ewf_widget_latest_posts ul li p { 
+		color: #fe2c45;
+	}
+	
+	.ewf_widget_latest_posts ul li p a:hover {
+		color: #252525;
+	}
+	
+/* =EWF Navigation widget
+   ========================================================================== */
+	
+	.ewf_widget_navigation li { border-bottom: 1px solid #e0e0e0; }
+
+/* =EWF Social media widget
+   ========================================================================== */
+	
+	#footer-top .ewf_widget_social_media a.social-icon {
+		border-left: 1px solid #444;
+	}
+	
+	#footer-top .ewf_widget_social_media a.social-icon:last-child { border-right: 1px solid #444; }

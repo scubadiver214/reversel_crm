@@ -1,0 +1,29 @@
+.login_form{
+width:600px;
+height:250px;
+background:url(images/login_bg.png) no-repeat center top;
+margin:20px 0 0 145px;
+float:left;
+padding:0px 0 0 0px;
+}
+.form{
+width:450px;
+float:left;
+clear:both;
+}
+fieldset { border:#666 thin solid; clear:both; width:900px;}
+
+label {font-size:11px; font-weight:bold; color:#666;}
+label a{font-size:11px; font-weight:bold; color:#666;}
+dl {clear:both; width:500px;}
+dl.submit {clear:both; width:500px; text-align:center; padding:0 0 0 90px;}
+
+dt {float:left; text-align:right; width:130px; line-height:25px; padding:0 10px 10px 0;}
+dd {float:left; width:300px; margin:0 0 1px 0;}
+
+input.textbox{width:250px;}
+label.check_label{
+padding:0 0 0 10px;
+line-height:32px;
+}
+select, input, textarea, button {outline:none; resize:none;}
