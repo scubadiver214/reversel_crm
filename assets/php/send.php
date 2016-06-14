@@ -34,7 +34,7 @@
 
     $emess.= "Comments: ".$message."\n\n";
 
-    $emess.= "Email Addres: ".$email."\n\n";
+    $emess.= "Email Address: ".$email."\n\n";
 
     $subj = "An Email from ".$name."";
 
