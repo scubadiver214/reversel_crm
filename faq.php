@@ -45,7 +45,7 @@ include("_header.php"); ?>
                             <a class="accordion-item" href="faq.html#"><span>Q:</span> What is your company's Return Policy</a>                
                             <div class="accordion-item-content">
                                 
-                                <p><span class="text-highlight">A:</span> If the lead does not meet the criteria that we set up with you in advance, than we will replace that lead at NO COST to you. We have a "Guarantee Qualifier"  that the lead must meet all the criteria that is set in place ahead of your campaign launching.</p>
+                                <p><span class="text-highlight">A:</span> If the lead does not meet the criteria that we set up with you in advance, than we will replace that lead at NO COST to you. We have a "Guaranteed Quality Lead"  that the lead must meet all the criteria that is set in place ahead of your campaign launching.</p>
                                 
                             </div><!-- end .accordion-item-content -->
                             

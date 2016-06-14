@@ -9,8 +9,8 @@
                 <div class="row">
                     <div class="span12">
 						<div class="headline">                        	
-                            <h2>Welcome to Reverse Live Transfer</h2>                            
-                            <h5>We at Reverse Mortgage Authority are unique in the lead generation business for reverse mortgages.  We offer "truly exclusive" live call transfer reverse mortgage leads sold on a per lead basis that are delivered directly to you with our unprecedented "Guarantee Qualifier" to ensure that every lead is highly capable of becoming a closed loan for you. </h5>                            
+                            <h2>Welcome to "Reverse Live Transfers"</h2>                            
+                            <h5>Our Company is unique in the lead generation space for reverse mortgages. Unlike other companies, this is the only type of lead that we produce and sell. We offer "truly exclusive" live call transfer reverse mortgage leads sold on a per lead basis that are delivered directly to you with our unprecedented "Guaranteed Quality Leads" policy to ensure that the leads will result in closed loans for you and your company. </h5>                            
                         </div><!-- end .headline -->                    
                     </div><!-- end .span12 -->
                 </div><!-- end .row -->
@@ -24,7 +24,7 @@
                                 <h2>
                                     <a href="single-service.html">We Deliver For Your Success</a>
                                 </h2>                                
-                                <p>Reverse Mortgage Authority Marketing Group is a premier lead generator for the reverse mortgage industry with our incredible Guarantee to back it up. </p>                                
+                                <p>Reverse Live Transfers is a premier lead generator for the reverse mortgage industry with our incredible Guarantee to back it up. </p>                                
                             </div><!-- end .icon-box-content -->                            
                         </div><!-- end .icon-box-2 -->                    
                     </div><!-- end .span4 -->
@@ -65,9 +65,9 @@
                 	
                     <div class="features-list-content">                    
                         <h1>                            
-                            <small>Guarantee Qualifier</small>
+                            <small>Guaranteed Quality Leads</small>
                         </h1>                        
-                        <p>We offer a "Guarantee Qualifier" Policy for you. In order for the lead to be a billable lead it must meet the criteria that is set up prior to start of your campaign.</p>                                          
+                        <p>We offer a "Guaranteed Quality Leads" Policy for you. In order for the lead to be a billable lead it must meet the criteria that is set up prior to start of your campaign.</p>                                          
                     </div><!-- end .features-list-content -->                    
                 </li>
                 <li>
@@ -92,19 +92,17 @@
                         <br> 
                         <p>We deliver live call transfers of Senior Homeowners with warm hand-offs & introductions from our telemarketing professionals to you.
 <br/>
-Our "Guarantee Qualifier" means that every lead delivered to you allows you to verify and make sure that each homeowner meets the following criteria: </p>
+Our "Guaranteed Quality Leads" means that every lead delivered to you allows you to verify and make sure that each homeowner meets the following criteria: </p>
                         
                         <br>
                         
                         <ul class="arrow">
-                            <li>Customer is truly Interested in speaking with you about a reverse mortgage.</li>
-                            <li>Age - 62 years or older.</li>
-                            <li>Homeowner.</li>
-                            <li>Primary residence.</li>
+                            <li>Customer is truly Interested in speaking with you about a reverse mortgage</li>
+                            <li>Age - 62 years or older</li>
+                            <li>Homeowner</li>
+                            <li>Primary residence</li>
                             <li>SFR - property type</li>                            
-                        </ul>                        
-                        <br>                        
-                        <a class="btn" href="callto:4696065232">Call Now</a>                        
+                        </ul>                                    
                     </div><!-- end .span6 -->
                 </div><!-- end .row -->
             </div><!-- end .container -->            
@@ -124,7 +122,7 @@ Our "Guarantee Qualifier" means that every lead delivered to you allows you to v
                 <div class="row">
                     <div class="span12">
 						<div class="headline">                        	
-                            <h2>Testimonial</h2>                            
+                            <h2>Testimonials</h2>                            
                         </div><!-- end .headline -->                    
                     </div><!-- end .span12 -->
                 </div><!-- end .row -->

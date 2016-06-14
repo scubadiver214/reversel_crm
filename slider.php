@@ -31,7 +31,7 @@
                                  data-start="2000"
                                  data-transform_in="y:-100px;opacity:0;s:700;"
                                  data-transform_out="y:-100px;opacity:0;s:700;">
-                              Guaranteed qualifier
+                              Guaranteed Quality Leads
                             </div>
                             
                             <div class="tp-caption" 							
