@@ -48,7 +48,7 @@ include("_header.php");?>
                                 <h1>1</h1>                                
                                 <div class="process-description">                                
                                     <h3>The senior must have indicated a true need or interest in a reverse mortgage</h3>                                
-                                    <p>We work to identify their specific needin advance, such as eliminating their mortgage payment, struggling a bit financially and can't see how they can continue to dissolve their retirement funds more, and or have many reasons for wanting reverse mortgageor wanting access to a line of credit.</p>                                
+                                    <p>We work to identify their specific needs in advance, such as eliminating their mortgage payment, struggling a bit financially and can't see how they can continue to dissolve their retirement funds or have many reasons for wanting reverse mortgage or wanting access to a line of credit.</p>                                
                                 </div><!-- end .process-description -->                                
                             </li>
                             <li>                                
@@ -61,7 +61,7 @@ include("_header.php");?>
                             <li>                                
                                 <h1>3</h1>                                
                                 <div class="process-description">                                
-                                    <h3 style="padding-top:2%;">Our leads are exclusive leads - sold ONLY to you as our client - and are never resold, period.</h3>                                    
+                                    <h3 style="padding-top:2%;">Our leads are exclusive leads - sold ONLY to you as our customer - and are never resold, period.</h3>                                    
                                                           
                                 </div><!-- end .process-description -->                                
                             </li>
@@ -69,37 +69,29 @@ include("_header.php");?>
                             <li>                                
                                 <h1>4</h1>                                
                                 <div class="process-description">                                
-                                    <h3>We "organically grow" these leads ourselves, so the leads are typically NOT working with any other lender.</h3>                                   
-                                    <p>This means more money in your pocket, because you'll be able to make the higher margins, and won't be competing with other companies!We do not call on lists of internet leads that have been already called on by multiple lead companies and mortgage companies/loan officers.  Our leads are Truly Exclusive and we stand behind our product or you do not pay for them!, and if a lead is returned - it's the replaced free of charge!</p>                                
+                                    <h3>We do organic lead generation as well as internet opt in leads.</h3>                                   
+                                    <p>We do a mixture of lead generation techniques to bring you seniors that are interested in speaking to you about the prospect of doing a reverse mortgage. We have a multi-tiered marketing structure that is developed for each of our customers depending on their budget and their needs.   we organically grow our leads as well as call on leads that have gone on the internet and shown an interest in obtaining a reverse mortgage. This method brings the immediate goal of getting customers whom are in the market now for a reverse mortgage but might be talking to other loan officers, as well as the truly exclusive organic leads that we produce from a method of bringing a solution to their financial problems or imbalance which provides a lead that is not working with anyone else allowing you  to collect the higher margins and make more commissions when you are not in compaction with anyone else and you have truly have an exclusive lead.</p>                                
                                 </div><!-- end .process-description -->                                
                             </li>
                             
                              <li>                                
                                 <h1>5</h1>                                
                                 <div class="process-description">                                
-                                    <h3>We verify the client has sufficient equity in their property </h3>                                    
-                                    <p>(50%or more , or depending on age we use the Principal Limit table that the reverse mortgage industry sets as standard)  to qualify them for a reverse mortgage based on their age, etc. and/or they could be interested in bringing additional funds to closing in order to qualify for a reverse mortgage.</p>                                
+                                    <h3>Our leads are guaranteed* to meet a minimum home value of at least $100,000.</h3>                                    
+                                    <p>(Usually the home values are significantly higher; it will just depend on your state(s) and areas targeted, etc.)</p>                                
                                 </div><!-- end .process-description -->                                
                             </li>
                             
                              <li>                                
                                 <h1>6</h1>                                
                                 <div class="process-description">                                
-                                    <h3>Our leads are guaranteed* to meet a minimum home value of at least $75,000.</h3>                                    
-                                    <p>(Usually the home values are significantly higher; it will just depend on your state(s) and areas targeted, etc.)</p>                                
-                                </div><!-- end .process-description -->                                
-                            </li>
-                            
-                             <li>                                
-                                <h1>7</h1>                                
-                                <div class="process-description">                                
-                                    <h3 style="padding-top:2%;">We verify that the age of at least one homeowner is age 62 or older.</h3>                                    
+                                    <h3 style="padding-top:2%;">We Verify that the age of at least one homeowner is age 62 or older (Texas, both homeowners must be over the age of 62).</h3>                                    
                                                                   
                                 </div><!-- end .process-description -->                                
                             </li>
                             
                              <li>                                
-                                <h1>8</h1>                                
+                                <h1>7</h1>                                
                                 <div class="process-description">                                
                                     <h3> We verify that the home is a primary residence.</h3>                                    
                                     <p> No 2nd homes, vacation homes or investment properties?</p>                                
@@ -107,38 +99,12 @@ include("_header.php");?>
                             </li>
                             
                              <li>                                
-                                <h1>9</h1>                                
+                                <h1>8</h1>                                
                                 <div class="process-description">                                
-                                    <h3>We confirm that the home is a Single Family Residence, or 1-to-4 unit property or FHA approvedcondos</h3>                                    
-                                    <p>no mobile,  manufactured homes must be double wide and be greater than 750 square feet and have never been moved etc.</p>                                
+                                    <h3>We confirm that the home is a Single Family Residence, or 1-to-4 unit property or FHA approved condos.</h3>                                    
+                                    <p>No mobile,  manufactured homes must be double wide and be greater than 750 square feet and have never been moved etc.</p>                                
                                 </div><!-- end .process-description -->                                
                             </li>
-                            
-                             <li>                                
-                                <h1>10</h1>                                
-                                <div class="process-description">                                
-                                    <h3 style="padding-top:2%;">We verify that the potential LTV range is based on the greater of the estimated home value or maximum claim amount of $625,500 - whichever is less.</h3>                                    
-                                                             
-                                </div><!-- end .process-description -->                                
-                            </li>
-                            
-                             <li>                                
-                                <h1>11</h1>                                
-                                <div class="process-description">                                
-                                    <h3 style="padding-top:2%;">We obtain the client's approximate monthly income. (Where customer will divulge info)</h3>                                    
-                                                                
-                                </div><!-- end .process-description -->                                
-                            </li>
-                            
-                             <li>                                
-                                <h1>12</h1>                                
-                                <div class="process-description">                                
-                                    <h3 style="padding-top:2%;"> We obtain the client's opinion of their Credit Rating(  Excellent      Good         Fair        Poor  ),(Where customer will divulge info)</h3>                                    
-                                                             
-                                </div><!-- end .process-description -->                                
-                            </li>
-                            
-                             
                         </ul>
                         
                     </div><!-- end .span6 -->

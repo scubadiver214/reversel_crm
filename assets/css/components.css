@@ -1964,13 +1964,13 @@
    ========================================================================== */
 
 	.testimonial {
-		padding: 60px 20px 60px 50px;
+		padding: 30px 20px 30px 50px;
 		margin-bottom: 30px;
 		background-color: #edf1f0;
 		color: #252525;
 	}
 	
-	.testimonial blockquote { margin-bottom: 0; }
+	.testimonial blockquote { margin-bottom: 20px; }
 	
 	.testimonial blockquote p { font-style: normal; }
 	
@@ -1995,6 +1995,18 @@
 		text-transform: none;
 	}
 	
+	.testimonial > h6 span {
+		margin-left: 135px;
+		font-weight: 700;
+		text-transform: uppercase;
+		
+	}
+
+	.testimonial > h7 span {
+		margin-left: 135px;
+		padding-top: 10px;
+	}
+
 	/*
 	 * 1. Clearfix hack 
 	 */

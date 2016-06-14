@@ -13,7 +13,7 @@ include("_header.php");?>
 					<div class="row">
 						<div class="span12">
 
-                            <h3>Reverse Mortgage Live Lead</h3>
+                            <h3>Our Lead Distribution / Management Web Portal</h3>
                         
 						</div><!-- end .span12 -->
 					</div><!-- end .row -->
@@ -23,22 +23,10 @@ include("_header.php");?>
             
             <div class="container">
             	<div class="row">
-                	<div class="span5">
-                    	
-                        <h3 class="text-uppercase"><strong>The Authority in the Reverse Mortgage Industry</strong></h3>
-                        <p>Reverse Mortgage Authority Marketing Group, LLC (RMA) was founded in 2013 on the premise of designing and implementing a lead generation Company that would deliver the best reverse mortgage leads in the industry.  Through years of trial and error and significant development, we at RMA have developed a lead generation system that is genuinely the best in the business.  With years of experience in the Reverse Mortgage sector, we truly understand what is necessary through our extensive experience in generating more closed reverse mortgage loans for you.</p>
-                        
+                	<div class="span">
+                        <h3 class="text-uppercase"><strong>How we deliver our Leads to you and our commitment to quality</strong></h3>
+                        <p>We have developed a proprietary Lead distribution/management CRM that we will give you log in credentials to access your leads that we live call transfer deliver to you.  The purpose of this web portal is used for several things: 1. For you to have access to your leads, view them and print them etc. 2nd, you will have the ability to approve or decline each and every lead based on whether it met the criteria that we set up with you in advance of starting your campaign, this creates accountability from us to generate and supply you with a high quality lead that meets the criteria or it is not a billable lead and we replace the lead. Thirdly, we can integrate with your current CRM and post your leads in real time directly into your CRM as well.</p>
                     </div><!-- end .span12 -->
-                    
-                    <div class="span7">
-                    	
-                        <h3 class="text-uppercase"><strong>We Know Your Business</strong></h3>
-                        <p>Because we understand your business in previously having our own reverse mortgage firm, we know exactly what it takes to generate consistently, the highest quality leads never available before now in the industry.  RMA was literally developed out of the frustration of not being able to acquire "truly exclusive" and "qualified" reverse mortgage leads in the market.  That's why we spent over a year in developing our proprietary and revolutionary reverse mortgage lead system so that you can maximize your advertising return on investment with higher closing ratios and profitability.</p><p>
-
-Give us a call today at <a href="callto:4696065232"> <strong>469-606-5232</strong></a>.  We truly want to hear from you to discuss how we can provide you with great lead generation consistently, to take your business to the next level of success!
-</p>
-                        
-                    </div>
                     
                 </div><!-- end .row -->
             </div><!-- end .container -->

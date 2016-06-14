@@ -50,60 +50,27 @@
                 <div class="row">
                     <div class="span4">
                     
-                    <h4 class="text-uppercase"><strong>Call Us at</strong>   :                      
-                        (469) 606-5232  </h4>
-                        
- 						                      
-                                              
+                    <h4 class="text-uppercase"><strong>Call Us at </strong><a href="callto:8182749969">818-274-9969</a></h4>
                         <div class="widget ewf_widget_contact_info"> 
                             <br>                   
                             <ul> 
-                               <li> <strong> <i class="fa fa-user"></i> : Forrest Layton (Owner) </strong></li>                            
-                               <li> <i class="fa fa-phone"></i> : ext-100  </li>
-                               <li><i class="fa fa-envelope"></i> <a href="mailto:forrest@rmauthority.com"> :forrest@rmauthority.com</a> </li>
+                               <li> <strong> <i class="fa fa-user"></i>Forrest Layton (Owner) </strong></li>                            
+                               <li> <i class="fa fa-phone"></i><a href="callto:8182749969">818-274-9969</a></li>
+                               <li><i class="fa fa-envelope"></i><a href="mailto:forrest@reverselivetransfers.com">forrest@reverselivetransfers.com</a></li>
                             </ul>
-                             <br>  <br>                  
+                            <br>                  
                             <ul> 
-                               <li> <strong> <i class="fa fa-user"></i> : Gary Gibbs (Sales Account Executive) </strong></li>                            
-                               <li> <i class="fa fa-phone"></i> : ext-103  </li>
-                               <li><i class="fa fa-envelope"></i> <a href="mailto:gary@rmauthority.com"> :gary@rmauthority.com</a> </li>
+                               <li> <strong> <i class="fa fa-user"></i>Dustin Powers (Sales) </strong></li>                            
+                               <li> <i class="fa fa-phone"></i><a href="callto:8184399779">818-439-9779</a></li>
+                               <li><i class="fa fa-envelope"></i> <a href="mailto:dustin@reverselivetransfers.com">dustin@reverselivetransfers.com</a></li>
                             </ul>
-                             <br>   <br>                 
+                            <br>
                             <ul> 
-                               <li> <strong> <i class="fa fa-user"></i> : David Altgelt (Sales Account Executive) </strong></li>                            
-                               <li> <i class="fa fa-phone"></i> : ext-104  </li>
-                               <li><i class="fa fa-envelope"></i> <a href="mailto:david@rmauthority.com"> :david@rmauthority.com</a> </li>
+                               <li> <strong> <i class="fa fa-user"></i> Allison Fritts (Operations and Customer Service) </strong></li>                            
+                               <li> <i class="fa fa-phone"></i><a href="callto:2144025540">214-402-5540</a> </li>
+                               <li><i class="fa fa-envelope"></i> <a href="mailto:allison@reverselivetransfers.com">allison@reverselivetransfers.com</a> </li>
                             </ul>
-                            
                         </div><!-- end .ewf_widget_contact_info -->
-                        
-                        <div class="widget ewf_widget_social_media"> 
-                            
-                            <div class="fixed">
-                                
-                                <a href="contact-1.html#" class="linkedin-icon social-icon">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                                
-                                <a href="contact-1.html#" class="dribble-icon social-icon">
-                                    <i class="fa fa-dribbble"></i>
-                                </a>
-                                
-                                <a href="contact-1.html#" class="facebook-icon social-icon">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                
-                                <a href="contact-1.html#" class="twitter-icon social-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                
-                                <a href="contact-1.html#" class="instagram-icon social-icon">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                
-                            </div>
-                            
-                        </div><!-- end .ewf_widget_social_media -->
                     
                     </div><!-- end .span4 -->
                     <div class="span8">

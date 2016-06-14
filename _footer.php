@@ -8,23 +8,41 @@
                                 <p>
                                 	<img src="assets/images/logo-footer.png" alt="">
                                 </p>
-                                  <p> Reverse Mortgage Authority Marketing Group, LLC (RMA) was founded in 2013 on the premise of designing and implementing a lead generation Company that would deliver the best reverse mortgage leads in the industry.</p>                                
+                                  <p>Reverse Live Transfers, formally known as Reverse Mortgage Authority Marketing Group, LLC (RMA) was founded in 2013 on the premise of designing and implementing a lead generation Company that would deliver the best reverse mortgage leads in the industry.</p>                                
                             </div><!-- end .textwidget -->                            
                         </div><!-- end .widget_text --> 
                     </div><!-- end .span3 -->                    
                     <div class="span3" id="footer-widget-area-2">                        
                         <div class="widget ewf_widget_contact_info">                    
                             <h4 class="widget-title">Contact</h4>                            
-                            <ul>                                
-                                <li>
-                                	<i class="fa fa-phone"></i>
-                                   Office:   (469) 606-5232 
-                                </li>
-                                <li>Forrest Layton (Owner) ext.100</li>                                
-                                <li>
-                                	<i class="fa fa-envelope"></i>
-                                    <a href="mailto:#">forrest@rmauthority.com</a><br>
-                                </li>
+                            <ul>    
+                                    <li> Sales: Dustin Powers</li>                            
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        Office: <a href="callto:8184399779">818-439-9779</a> 
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <a href="mailto:dustin@reverselivetransfers.com">dustin@reverselivetransfers.com</a><br>
+                                    </li>
+                                    <li>Operations and Customer Service: Allison Fritts </li>                            
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        Office: <a href="callto:2144025540">214-402-5540</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <a href="mailto:allison@reverselivetransfers.com">allison@reverselivetransfers.com</a><br>
+                                    </li>
+                                     <li>Owner: Forrest Layton </li>                            
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        Office: <a href="callto:8182749969">818-274-9969</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <a href="mailto:forrest@reverselivetransfers.com">forrest@reverselivetransfers.com</a><br>
+                                    </li>
                             </ul>                            
                         </div><!-- end .widget_text -->
                     </div><!-- end .span3 -->
@@ -36,7 +54,8 @@
                                 <li class="page_item"><a href="about-us.php">About Us</a></li>
                                 <li class="page_item"><a href="why-choose-us.php">Why Choose Us</a></li>
                                 <li class="page_item"><a href="leads.php">Leads</a></li>   
-                                <li class="page_item"><a href="userlogin.php">User Login</a></li>                                
+                                <li class="page_item"><a href="faq.php">FAQ</a></li>
+                                <li class="page_item"><a href="contact.php">Contact Us</a></li>
                             </ul>                            
                         </div><!-- end .widget_pages -->                        
                     </div><!-- end .span3 -->
@@ -47,17 +66,8 @@
                                	<a href="#" class="facebook-icon social-icon">
 										<i class="fa fa-facebook"></i>
 									</a>
-									<a href="#" class="twitter-icon social-icon">
-										<i class="fa fa-twitter"></i>
-									</a>									
-									<a href="#" class="pinterest-icon social-icon">
-										<i class="fa fa-pinterest"></i>
-									</a>
 									<a href="#" class="linkedin-icon social-icon">
 										<i class="fa fa-linkedin"></i>
-									</a>
-									<a href="#" class="skype-icon social-icon">
-										<i class="fa fa-skype"></i>
 									</a>
                             </div><!-- end .flickr-feed -->                        
                         </div><!-- end .ewf_widget_flickr -->                        

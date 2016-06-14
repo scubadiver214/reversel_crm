@@ -44,7 +44,7 @@
                                     	<a href="why-choose-us.php">Why Choose Us</a>                                       
                                     </li>                                    
                                     <li class="<?php if($page=="leads.php"){ echo "current";}?>">
-                                        <a href="leads.php">Leads</a>
+                                        <a href="leads.php">Lead Portal</a>
                                         
                                     </li>
                                      <li class="<?php if($page=="faq.php"){ echo "current";}?>">
