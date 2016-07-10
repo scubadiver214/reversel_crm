@@ -2,7 +2,9 @@
 $pagename = "listlead.php";
 include("_session.php"); 
 include("_dataAccess.php");
-
+require_once 'phpExcel/Classes/PHPExcel.php';
+					// Create new PHPExcel object
+$objPHPExcel = new PHPExcel();
 if(isset($_REQUEST['action'])){
     if($_REQUEST['action']=='delete')
     {
@@ -27,8 +29,12 @@ foreach($_REQUEST as $reqkey=>$reqval)
    }
   }
  }
+ if(isset($_REQUEST['Reset'])){
+    pageRedirection("listlead.php");
+ }
 if(isset($_REQUEST['Search']))
 	{
+	   
 		if($_REQUEST['str_leadid']!="")
 		{
 			 $strcond = " AND freshleads.Reference = '".$_REQUEST['str_leadid']. "' ";
@@ -84,15 +90,54 @@ if(isset($_REQUEST['Search']))
 					
 					$strcond.=" AND date(freshleads.TransferDateTime) >= '".$datef."'";
 					$strcond.=" AND date(freshleads.TransferDateTime) <= '".$datet."'";
-			}
-			
+			}			
 		}
 	}
     $dataString = array();
     for($l=1;$l<=50;$l++){ array_push($dataString,"campaigns.Type$l as Ques$l,freshleads.Data$l as Ans$l"); }
     if(($_REQUEST['Search']=="Download"))
     {
-       $qryString = 'SELECT freshleads.Reference as LeadID ,campaigns.cmp_name AS Campaign, concat_ws(" ",freshleads.Title,freshleads.FirstName,freshleads.MiddleNames,freshleads.LastName) as Name,freshleads.Email,freshleads.telephone1,freshleads.telephone2,'.implode(",",$dataString).',center_user.cen_comp AS Center,client_user.clt_comp AS Client ,concat_ws(" ",agent_user.ag_fname,agent_user.ag_lname) AS Agent,disposition.dispname AS Status,freshleads.TransferDateTime AS Transferdate FROM agent_user ,center_user ,campaigns ,client_user ,disposition,freshleads WHERE freshleads.Status = disposition.dispid AND agent_user.agid = freshleads.User AND  client_user.cltid = freshleads.Buyer AND campaigns.cmp_id = freshleads.campaignid AND center_user.cenid = freshleads.Cent_id '.$strcond.' ORDER BY LeadID DESC LIMIT 0,2000';
+      
+	   $qryString = 'SELECT freshleads.Reference as LeadID ,campaigns.cmp_name AS Campaign, concat_ws(" ",freshleads.Title,freshleads.FirstName,freshleads.MiddleNames,freshleads.LastName) as Senior1,concat_ws(" ",freshleads.Title2,freshleads.FirstName2,freshleads.MiddleNames,freshleads.LastName2) as Senior2,freshleads.Email,freshleads.telephone1,freshleads.telephone2,'.implode(",",$dataString).',center_user.cen_comp AS Center,client_user.clt_comp AS Client ,concat_ws(" ",agent_user.ag_fname,agent_user.ag_lname) AS Agent,disposition.dispname AS Status,freshleads.TransferDateTime AS Transferdate,freshleads.transfer_to AS `Transfer To` FROM agent_user ,center_user ,campaigns ,client_user ,disposition,freshleads WHERE freshleads.Status = disposition.dispid AND agent_user.agid = freshleads.User AND  client_user.cltid = freshleads.Buyer AND campaigns.cmp_id = freshleads.campaignid AND center_user.cenid = freshleads.Cent_id '.$strcond.' ORDER BY LeadID DESC LIMIT 0,2000';
+		$objPHPExcel->getProperties()->setCreator("Lead Reporter")
+							 ->setLastModifiedBy("Lead Reporter")
+							 ->setTitle("Report")
+							 ->setSubject("Report")
+							 ->setDescription("Report")
+							 ->setKeywords("Report")
+							 ->setCategory("Report");
+       $count = 1;
+		$qryDownload = $sqli->get_selectData($qryString);
+			$i = 'A' ;
+			foreach($qryDownload[0] as $key=>$prn){
+			$objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue($i.$count,$key );
+			$i++;
+			}
+			$count++;
+		
+		foreach ($qryDownload as $dwnld)
+		{
+			$i = 'A' ;
+			foreach($dwnld as $prn){
+				$objPHPExcel->setActiveSheetIndex(0)			
+            ->setCellValue($i.$count,$prn );
+			$i++;
+			}
+			
+			$count++;
+		}
+		
+$objPHPExcel->getActiveSheet()->setTitle('Orders');
+// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+$objPHPExcel->setActiveSheetIndex(0);
+// Redirect output to a client's web browser (Excel2007)
+header('Content-Type: application/vnd.ms-excel');
+header('Content-Disposition: attachment;filename="Pick-Report-as-on-'.date("Y-m-d H-i-s").'.csv"');
+header('Cache-Control: max-age=0');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+$objWriter->save('php://output');
+exit;
     }
     else
     { 
@@ -101,11 +146,9 @@ if(isset($_REQUEST['Search']))
 
 $statsqry = "SELECT dispname,count(freshleads.Reference) stats FROM freshleads ,disposition  WHERE freshleads.`Status` = disposition.dispid ".$strcond." GROUP By disposition.dispid";
 $stats = $sqli->get_selectData($statsqry);	
-//echo $seluserdetails;
-$items_per_page=5;
-	
 
-//echo $seluserdetails;
+$items_per_page=25;
+
 if(isset($_REQUEST['items_per_page'])) $items_per_page = $_REQUEST['items_per_page'];else $items_per_page=5;
 if(isset($_REQUEST['page'])) $pagen = $_REQUEST['page']-1;else $pagen=0; 
 $pager = new SqlPager($sqli,$qryString,$pagename."?".$urlParameters,$items_per_page);	
@@ -140,8 +183,7 @@ $pager -> opt_links_count 					    = 5;
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><h2>List Leads</h2></td>
-    <td align="right"><!--<a href="leads.php"><img src="images/add-details.png" alt="" title="Add New" border="0" /></a>-->
-</td>
+    
   </tr>
 </table>
 <!-- search form -->
@@ -171,14 +213,8 @@ $pager -> opt_links_count 					    = 5;
 	<tr>
     <td width="20%" align="right" nowrap="nowrap">Lead ID:</td>
     <td width="30%" align="left">
-      <input type="text" class="required textbox" name="str_leadid" size="30" id="str_leadid" c/></td>
-    <td width="10%" align="right" valign="top">First Name:</td>
-    <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_firstName" size="30" id="str_firstName"/></td>
-    </tr>
-    <tr>
-      <td width="20%" align="right" nowrap="nowrap">Last Name:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_lastName" size="30" id="str_lastName"/></td>
-      <td width="10%" align="right" valign="top">Agent:</td>
+      <input type="text" class="required textbox" name="str_leadid" <?php if($_REQUEST['str_leadid']!=""){ ?> value="<?php echo $_REQUEST['str_leadid']; ?>"  <?php } ?> id="str_leadid" c/></td>
+       <td width="10%" align="right" valign="top">Agent:</td>
       <td width="40%" align="left" valign="top">
      <select name="dd_agent" id="dd_agent">
          <option value="" selected="selected">- Select -</option>
@@ -187,14 +223,23 @@ $pager -> opt_links_count 					    = 5;
 	$dataag=$sqli->get_selectData($strQueryag); 
 	
 	 foreach($dataag as $key=>$valueag){?>
-         <option value="<?php echo $valueag['agid'];?>"> <?php echo $valueag['ag_fname']." ".$valueag['ag_lname'];?></option>
+         <option <?php if($_REQUEST['dd_agent']==$valueag['agid']) echo "Selected"; ?> value="<?php echo $valueag['agid'];?>"> <?php echo $valueag['ag_fname']." ".$valueag['ag_lname'];?></option>
          <?php }?>
        </select>
-      </td>
+      </td>      
+    
     </tr>
     <tr>
+    <td width="20%" align="right" valign="top">First Name :</td>
+    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_firstName" <?php if($_REQUEST['str_firstName']!=""){ ?> value="<?php echo $_REQUEST['str_firstName']; ?>"  <?php } ?> id="str_firstName"/></td>    
+      <td width="10%" align="right" nowrap="nowrap">Last Name:</td>
+      <td width="40%" align="left"><input type="text" class="required textbox" name="str_lastName" <?php if($_REQUEST['str_lastName']!=""){ ?> value="<?php echo $_REQUEST['str_lastName']; ?>"  <?php } ?> id="str_lastName"/></td>
+     
+    </tr>
+     
+    <tr>
       <td width="20%" align="right" nowrap="nowrap">Phone Number:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_phone" size="30" id="str_phone"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_phone" <?php if($_REQUEST['str_phone']!=""){ ?> value="<?php echo $_REQUEST['str_phone']; ?>"  <?php } ?> id="str_phone"/></td>
       <td width="10%" align="right" valign="top">Client:</td>
       <td width="40%" align="left" valign="top">
      <select name="dd_client" id="dd_client">
@@ -204,16 +249,16 @@ $pager -> opt_links_count 					    = 5;
 	$dataclt=$sqli->get_selectData($strQuery1); 
 	
 	 foreach($dataclt as $key=>$valueclt){?>
-         <option value="<?php echo $valueclt['cltid'];?>"> <?php echo $valueclt['clt_comp'];?></option>
+         <option <?php if($_REQUEST['dd_client']==$valueclt['cltid']) echo "Selected"; ?> value="<?php echo $valueclt['cltid'];?>"> <?php echo $valueclt['clt_comp'];?></option>
          <?php }?>
        </select>
       </td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap">Date From:</td>
-      <td align="left"><input type="text" class="required textbox" name="str_date_from" size="30" id="strlast_edit_date_from"/></td>
+      <td align="left"><input type="text" class="required textbox" name="str_date_from" <?php if($_REQUEST['str_date_from']!=""){ ?> value="<?php echo $_REQUEST['str_date_from']; ?>"  <?php } ?> id="strlast_edit_date_from"/></td>
       <td width="10%" align="right" valign="top">Date To:</td>
-      <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_date_To" size="30" id="strlast_edit_date_to"/></td>
+      <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_date_To" <?php if($_REQUEST['str_date_To']!=""){ ?> value="<?php echo $_REQUEST['str_date_To']; ?>"  <?php } ?> id="strlast_edit_date_to"/></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap"> Status:</td>
@@ -224,7 +269,7 @@ $pager -> opt_links_count 					    = 5;
 		$strQuery5="select * from disposition where 1";
 		$datast=$sqli->get_selectData($strQuery5); 
 		 foreach($datast as $key=>$valuest){?>
-         <option value="<?php echo $valuest['dispid'];?>"> <?php echo $valuest['dispname'];?></option>
+         <option <?php if($_REQUEST['dd_status']==$valuest['dispid']) echo "Selected"; ?> value="<?php echo $valuest['dispid'];?>"> <?php echo $valuest['dispname'];?></option>
          <?php }?>
        </select>
       </td>
@@ -237,7 +282,7 @@ $pager -> opt_links_count 					    = 5;
 $datacamp=$sqli->get_selectData($strQuery3); 
 	
 	 foreach($datacamp as $key=>$valuecamp){?>
-         <option value="<?php echo $valuecamp['cmp_id'];?>"> <?php echo $valuecamp['cmp_name'];?></option>
+         <option <?php if($_REQUEST['dd_camp']==$valuecamp['cmp_id']) echo "Selected"; ?> value="<?php echo $valuecamp['cmp_id'];?>"> <?php echo $valuecamp['cmp_name'];?></option>
          <?php }?>
        </select>
        </td>
@@ -251,7 +296,7 @@ $datacamp=$sqli->get_selectData($strQuery3);
 $datacenter=$sqli->get_selectData($strQuery2); 
 	
 	 foreach($datacenter as $key=>$valuecenter){?>
-         <option value="<?php echo $valuecenter['cenid'];?>"> <?php echo $valuecenter['cen_comp'];?></option>
+         <option <?php if($_REQUEST['dd_center']==$valuecenter['cenid']) echo "Selected" ?> value="<?php echo $valuecenter['cenid'];?>"> <?php echo $valuecenter['cen_comp'];?></option>
          <?php }?>
        </select></td>
        <td width="10%" align="right" valign="top">State:</td>
@@ -262,7 +307,7 @@ $datacenter=$sqli->get_selectData($strQuery2);
 $datastate=$sqli->get_selectData($strQuery14); 
 	
 	 foreach($datastate as $key=>$valuestate){?>
-         <option value="<?php echo $valuestate['zone_id'];?>"> <?php echo $valuestate['name'];?></option>
+         <option <?php if($_REQUEST['dd_stateName']==$valuestate['zone_id']) echo "Selected" ?> value="<?php echo $valuestate['zone_id'];?>"> <?php echo $valuestate['name'];?></option>
          <?php }?>
        </select></td>
        </tr>
@@ -276,9 +321,9 @@ $datastate=$sqli->get_selectData($strQuery14);
        <td align="right" nowrap="nowrap">&nbsp;</td>
        <td align="right"><input type="submit" name="Search" id="Search" value="Search" style="padding: 4px;background: #7ECE5A; text-decoration: none; color: #fff;"/></td>
       <td width="10%" align="right">
-    <!--    <input type="submit" name="Search" id="Search" value="Download" style="padding: 4px;background: #468A27; text-decoration: none; color: #fff;"/>-->
+        <input type="submit" name="Search" id="Search" value="Download" style="padding: 4px;background: #468A27; text-decoration: none; color: #fff;"/>
        </td> 
-       <td width="40%" align="left" valign="top">&nbsp;</td>
+       <td width="40%" align="left" valign="top"><input type="submit" name="Reset" id="Search" value="Reset" /></td>
      </tr>
     </table>
     </fieldset>
@@ -381,18 +426,12 @@ $datastate=$sqli->get_selectData($strQuery14);
          <?php }  ?>
     </tbody>
 </table>
-        
-        
+      
       </div><!-- end of right content-->
-            
-                    
+                
   </div>   <!--end of center content -->               
-                    
-                    
-    
-    
+  
     <div class="clear"></div>
     </div> <!--end of main content-->
 	
-    <?php include("includes/footer.php"); ?>
-   
+    <?php include("includes/footer.php"); ?>   
