@@ -271,10 +271,11 @@ $datastate=$sqli->get_selectData($strQuery14);
         </tr>
         
         <tr>
+                <td width="10%" align="right" nowrap="nowrap">Operation Hours (From):</td>
+        <td width="40%"><input type="time" class="required textbox" name="str_clt_op_hours_from" id="str_clt_op_hours_from" size="30" value= "<?php echo $data[0]['clt_op_hours_from']; ?>" /></td>
         <td width="20%" align="right" nowrap="nowrap">Operation Hours (To) :</td>
         <td width="30%"><input type="time" class="required textbox" name="str_clt_op_hours_to" id="str_clt_op_hours_to" size="30" value= "<?php echo $data[0]['clt_op_hours_to']; ?>" /></td>
-        <td width="10%" align="right" nowrap="nowrap">Operation Hours (From):</td>
-        <td width="40%"><input type="time" class="required textbox" name="str_clt_op_hours_from" id="str_clt_op_hours_from" size="30" value= "<?php echo $data[0]['clt_op_hours_from']; ?>" /></td>
+
         </tr>
         
       <tr>

@@ -8,7 +8,10 @@ include("_dataAccess.php");
  $ccdata = count($dataPer);
    	  
            
-$strQuery ="Select * from leadorder where 1";
+$strQuery = "SELECT *
+  FROM leadorder LEFT JOIN client_user ON (leadorder.clt_id=client_user.cltid)
+  WHERE client_user.clt_status = 1";
+
 $items_per_page=5;
 $pager = new SqlPager($sqli,$strQuery,"$pagename?$urlParameters",$items_per_page);	
 
@@ -56,6 +59,7 @@ $pager -> opt_links_count 					    = 5;
 			<th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Quantity</strong></th>
 			<th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Transfer</strong></th>
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Balance</strong></th>
+            <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Time Zone</strong></th>
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Operation Hours</strong></th>
              <th align="left" nowrap="nowrap" class="rounded" scope="col" style="width: 25%;"><strong>Operation States</strong></th>
 			</tr>
@@ -101,6 +105,7 @@ $pager -> opt_links_count 					    = 5;
 			<?php 
 			$strQuery12="select * from client_user where cltid = '". $row['clt_id']."' ";
 			$datac=$sqli->get_selectData($strQuery12);
+            $timezone = $datac[0]['clt_timezone'];
 			echo $datac[0]['clt_alias']; ?>
    		  </td>
            <?php if($ccdata>0){?>
@@ -122,7 +127,29 @@ $pager -> opt_links_count 					    = 5;
              
              echo $netBal; ?></td>
               <td><?php echo ($row['quantity']-$netBal); ?></td>
+                      <td>
+                        <?php 
+                        switch ($timezone) {
+                            case 0:
+                                echo "Not Selected";
+                                break;
+                            case 1:
+                                echo "PST";
+                                break;
+                            case 2:
+                                echo "MST";
+                                break;
+                            case 3:
+                                echo "CST";
+                                break;
+                            case 4:
+                                echo "EST";
+                                break;
+                            }
+                        ?>
+                      </td>
                <td><?php echo $datac[0]['clt_op_hours_from']." - ".$datac[0]['clt_op_hours_to']; ?></td>
+               
                 <td>
                 
                 <?php 
