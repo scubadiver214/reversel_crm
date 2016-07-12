@@ -46,20 +46,21 @@ if(isset($_POST['Continue']))
             $strQueryfreshlead ="SELECT * FROM freshleads where Buyer='".$_POST['dd_dupeClient']."' AND campaignid='".$_POST['dd_dupeCamp']."' AND freshleads.TransferDateTime='".date("Y-m-d")."'";	
 			 $datafreshlead=$sqli->get_selectData($strQueryfreshlead);  
            $countfreshleads= count($datafreshlead);
-            
+            /*
                 if($countfreshleads>=$nettpdlead)
                 {
 					  array_push($_SESSION['errmessage'],"Daily limit of transfer  for this client and campaign has been achieved, Please check order details.");
 					  pageRedirection("listlead_order.php");
 				 } 
-             
+             */
             //Daily limit for transfer  for this client and Campaign has been achieved, Please check order details.
+			/*
                  if($countnetleads==0)
                  {
 					  array_push($_SESSION['errmessage'],"Order for this client and Campaign has been completed.Please check order details");
 					  pageRedirection("listlead_order.php");
 				 }        
-			 	 
+			 	*/ 
 				 if(count($data4)==0&&count($data44)==0)
 				 {
 					 array_push($_SESSION['message'],"Please Complete the details from.");

@@ -52,9 +52,9 @@ K(function($) {
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker({ changeMonth: true, changeYear: true,dateFormat: 'yy-mm-dd'});
+    $( "#datepicker" ).datepicker({ changeMonth: true, changeYear: true,dateFormat: 'mm-dd-yy'});
      
-    $( "#datepicker1" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'yy-mm-dd' });
+    $( "#datepicker1" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy' });
      
   });
   </script>
