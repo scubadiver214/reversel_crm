@@ -49,13 +49,10 @@ K(function($) {
  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker({ changeMonth: true, changeYear: true,dateFormat: 'mm-dd-yy'});
-     
-    $( "#datepicker1" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy' });
-     
+    $( "#datepicker" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy', yearRange: '1900:2000'});
+    $( "#datepicker1" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy',  yearRange: '1900:2000'});
   });
   </script>
   
@@ -71,7 +68,7 @@ var LL = jQuery.noConflict();
 			buttonImage: "images/calendar.gif",
 			buttonImageOnly: true,
     		dateFormat: 'mm-dd-yy',
-			yearRange: "1950:<?php echo date("Y") ?>"
+			yearRange: "1900:<?php echo date("Y") ?>"
 			
 		});
 		LL( "#strlast_edit_date_to" ).datepicker({
@@ -81,7 +78,7 @@ var LL = jQuery.noConflict();
 			buttonImage: "images/calendar.gif",
 			buttonImageOnly: true,
     		dateFormat: 'mm-dd-yy',
-			yearRange: "1950:<?php echo date("Y") ?>"
+			yearRange: "1900:<?php echo date("Y") ?>"
 			
 		});
 		});
@@ -89,33 +86,6 @@ var LL = jQuery.noConflict();
 
 <link rel="stylesheet" type="text/css" media="all" href="niceforms-default.css" />
 <link rel="stylesheet" href="colorbox/colorbox.css" />
-
- <link href="css/timepicki.css" rel="stylesheet">
-  <script src="js/timepicki.js"></script>
-    <script>
-	$('#timepicker1').timepicki({increase_direction:'up'});
-	$('#timepicker2').timepicki({min_hour_value:4});
-	$('#timepicker3').timepicki({max_hour_value:8}); 
-	$('#timepicker4').timepicki({custom_classes:"myclass"});
-	$('#timepicker5').timepicki({show_meridian:false});
-	$('#timepicker6').timepicki({
-		step_size_hours:2,
-		step_size_minutes:15});
-	$('#timepicker7').timepicki({
-		overflow_minutes:true,
-		step_size_minutes:15});
-	$('#timepicker8').timepicki({start_time: ["06", "00", "AM"]});
-	$('#timepicker9').timepicki({disable_keyboard_mobile: true});
-	$('#timepicker10').timepicki({reset:true});
-	$('#timepicker11').timepicki({
-		show_meridian:false,
-		min_hour_value:0,
-		max_hour_value:23,
-		step_size_minutes:15,
-		overflow_minutes:true,
-		increase_direction:'up',
-		disable_keyboard_mobile: true});
-	</script>
 </head>
 
 <body>

@@ -6,7 +6,7 @@ if(isset($_GET['refID']))
 {
 $strQuery1 ="Select * from freshleads where Reference='".$_GET['refID']."'  AND freshleads.User = '". $_SESSION['sessAgentID']."' ";
 $data=$sqli->get_selectData($strQuery1);
-//echo $data[0]['company_name'];
+
 }
 
  ?>
@@ -36,7 +36,7 @@ JQ(document).ready(function() {
   <tr>
     <td><h2>Lead  Details</h2></td>
     <td align="right">
-   <!-- <a href="update_form.php?refID=<?PHP echo $data[0]['Reference']; ?>"><img src="images/list-details.png" alt="" title="Update" border="0" /></a>--></td>
+      <img src="images/printbutton2-md.png" alt="" title="Print" onclick="javascript:print();" style="height:30px; width=40px; cursor: pointer; margin-right: 10px;" border="0" />
   </tr>
 </table>
 
@@ -74,6 +74,12 @@ JQ(document).ready(function() {
       <td align="left" nowrap="nowrap"><?php echo $data[0]['Title2']." ". $data[0]['FirstName2']." ".$data[0]['LastName2']; ?></td>
       <td align="right"><strong>Senior2 DOB:</strong></td>
       <td align="left"><?php echo $data[0]['dob2']; ?></td>
+    </tr>
+        <tr>
+      <td align="right" nowrap="nowrap"><strong>Senior Age 1:</strong></td>
+      <td align="left" nowrap="nowrap"><?php echo $data[0]['age']?></td>
+      <td align="right" nowrap="nowrap"><strong>Senior Age 2:</strong></td>
+      <td align="left" nowrap="nowrap"><?php echo $data[0]['age2']?></td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap"><strong>Phone Number:</strong></td>

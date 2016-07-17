@@ -8,34 +8,53 @@ if(isset($_POST['submit']))
 				{			
 						array_push($_SESSION['errmessage'],"Phone Number Must be Filled in correct format.");
 				}
-				if($_POST['str_Email']==""  )
-				{
-						array_push($_SESSION['errmessage'],"Email Must be Filled in correct Format.");
-				}
+				
 				if($_POST['dd_stateName']=="")
 				{
 						array_push($_SESSION['errmessage'],"Please Select State.");
 				}
-				if($_POST['str_Email']=="" || !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL) )
+
+				if($_POST['str_Email']!="" && !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL)) 
 				{
-						array_push($_SESSION['errmessage'],"Email Must be Filled in correct Format.");
+						array_push($_SESSION['errmessage'],"Email is not required. But if provided, it must be entered in the correct Format.");
+				}
+							if($_POST['age']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Age is required.");
 				}
 			
-			
-			if(count($_SESSION['errmessage'])==0)
-			{		
+			if(count($_SESSION['errmessage'])==0) {		
 			$sqli->table='freshleads';
 			$updateInformation['Title']	        =	$_POST['dd_Title'];
 			$updateInformation['FirstName']	    =	$_POST['str_FirstName'];
 			$updateInformation['LastName']	    =	$_POST['str_LastName'];
-            
-            $updateInformation['Title2']	    =	$_POST['dd_Title2'];
+      $updateInformation['Title2']	    =	$_POST['dd_Title2'];
 			$updateInformation['FirstName2']	=	$_POST['str_FirstName2'];
 			$updateInformation['LastName2']	    =	$_POST['str_LastName2'];            
-            $updateInformation['dob1']	        =	$_POST['str_dob1'];
-            if($_POST['str_dob2']!=""){
-			$updateInformation['dob2']	        =	$_POST['str_dob2'];
-		      }      
+            
+			if($_POST['str_dob1']!=""){
+				$dates = explode('-', $_POST['str_dob1']);
+				$month = $dates[0];
+				$day = $dates[1];
+				$year = $dates[2];
+				$finalDob = $year.'-'.$month.'-'.$day;
+				$insertInformation['dob1']	        =	$finalDob;
+			}
+          
+      if($_POST['str_dob2']!=""){
+				$dates2 = explode('-', $_POST['str_dob2']);
+				$month2 = $dates2[0];
+				$day2 = $dates2[1];
+				$year2 = $dates2[2];
+				$finalDob2 = $year2.'-'.$month2.'-'.$day2;
+				$insertInformation['dob2'] =	$finalDob2;
+			}    
+
+			$insertInformation['age']	    =	$_POST['age'];
+
+			if($_POST['age2']!= ""){
+				$insertInformation['age2']	    =	$_POST['age2'];
+			}
 			$updateInformation['Telephone1']	=	$_POST['str_Telephone1'];
 			$updateInformation['Telephone2']	=	$_POST['str_Telephone2'];		
 			$updateInformation['Email']	        =	$_POST['str_Email'];
@@ -160,7 +179,7 @@ JQ(document).ready(function() {
     </tr>
     
     	<tr>
-    <td width="20%" align="right" nowrap="nowrap">First Name(Senior 2)<span class="err">*</span>:</td>
+    <td width="20%" align="right" nowrap="nowrap">First Name(Senior 2):</td>
     <td width="30%" align="left"><select name="dd_Title2" id="dd_Title" class="small-select">
       <option value="" selected="selected">Title</option>
      <option value="Mr" <?php if($data[0]['Title2']=="Mr") echo "selected=\"selected\"" ?>>Mr</option>
@@ -174,8 +193,15 @@ JQ(document).ready(function() {
     <td width="20%" align="right" valign="top">Last Name(Senior 2)<span class="err">*:</span></td>
     <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName2" size="30" id="str_LastName" value="<?php echo $data[0]['LastName2']?>"/></td>
     </tr>
+        <!-- age -->
+    <tr>
+      <td width="20%" align="right" nowrap="nowrap">Age (Senior 1)<span class="err">*</span>:</td>
+      <td width="30%" align="left"><input type="text" class="required textbox"  name="age" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age'];?>"/></td>
+      <td width="20%" align="right" nowrap="nowrap">Age (Senior 2):</td>
+      <td width="30%" align="left"><input type="text" name="age2" size="3" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age2'];?>"/></td>
+    </tr>
      <tr>
-      <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1)<span class="err">*</span>:</td>
+      <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1):</td>
       <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" value="<?php echo $data[0]['dob1'];?>"/></td>
       <td width="20%" align="right" valign="top">Date of Birth(Senior 2):</td>
       <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" id="datepicker1" value="<?php echo $data[0]['dob2'];?>"/></td>
@@ -195,7 +221,7 @@ JQ(document).ready(function() {
       <td width="30%" rowspan="2" align="left" valign="top"><textarea name="str_Address" cols="33" rows="5" class="" id="str_Address"><?php echo $data[0]['Address']?></textarea></td>
     </tr>
     <tr>
-      <td width="20%" align="right" nowrap="nowrap">Email<span class="err">*</span>:</td>
+      <td width="20%" align="right" nowrap="nowrap">Email:</td>
       <td width="30%" align="left"><input type="text" class="required textbox" name="str_Email" size="30" id="str_Email" value="<?php echo $data[0]['Email']?>"/></td>
       </tr>
      <tr>

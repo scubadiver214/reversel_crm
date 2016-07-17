@@ -17,6 +17,9 @@ foreach($_REQUEST as $reqkey=>$reqval)
    }
   }
  }
+ if(isset($_REQUEST['Reset'])){
+    pageRedirection("listlead.php");
+ }
 if(isset($_REQUEST['Search']))
 	{
 		if($_REQUEST['str_leadid']!="")
@@ -34,8 +37,7 @@ if(isset($_REQUEST['Search']))
 			if($_REQUEST['str_phone']!="")
 			{
 					$strcond.=" AND freshleads.Telephone1 = '".$_REQUEST['str_phone']. "' AND  User = '". $_SESSION['sessAgentID']."'";
-			}
-			
+			}			
 			
 			if($_REQUEST['dd_status']!="")
 			{
@@ -64,24 +66,21 @@ if(isset($_REQUEST['Search']))
 					
 					$strcond.=" AND date(freshleads.TransferDateTime) >= '".$datef."'";
 					$strcond.=" AND date(freshleads.TransferDateTime) <= '".$datet."'";
-			}
-			
+			}			
 		}
 	}
 	
 	$strcond.="AND freshleads.Status = disposition.dispid";
 	
-	 $qryString = "SELECT agent_user.ag_fname,agent_user.ag_lname,client_user.clt_alias,client_user.clt_comp,campaigns.cmp_name,center_user.cen_comp,disposition.dispname,freshleads.Reference,freshleads.ReceivedDateTime,freshleads.Title,freshleads.FirstName,freshleads.MiddleNames,freshleads.LastName,freshleads.TransferDateTime,freshleads.Telephone1,freshleads.Telephone2,freshleads.Mobile,freshleads.Email,freshleads.Address,freshleads.Address2,freshleads.Address3,freshleads.TownCity,freshleads.stateName,freshleads.Postcode,freshleads.Data1,freshleads.Data2,freshleads.Data3,freshleads.Data4,freshleads.Data5,freshleads.Data6,freshleads.Data7,freshleads.Data8,freshleads.LastNote,freshleads.TransferDateTime,freshleads.Data9,freshleads.Data10,freshleads.Data11,freshleads.Data12,freshleads.Data13,freshleads.Data14,freshleads.Data15,freshleads.Data16,freshleads.Data17,freshleads.Data18,freshleads.Data19,freshleads.Data20,freshleads.Data21,freshleads.Data22,freshleads.Data23,freshleads.Data24,freshleads.Data25,freshleads.Data26,freshleads.Data27,freshleads.Data28,freshleads.Data29,freshleads.Data30,freshleads.Data31,freshleads.Data32,freshleads.Data33,freshleads.Data34,freshleads.Data35,freshleads.Data36,freshleads.Data37,freshleads.Data38,freshleads.Data39,freshleads.Data40,freshleads.Data41,freshleads.Data42,freshleads.Data43,freshleads.Data44,freshleads.Data45,freshleads.Data46,freshleads.Data47,freshleads.Data48,freshleads.Data49,freshleads.Data50,freshleads.transfer_to,freshleads.comments FROM agent_user ,center_user ,campaigns ,client_user ,disposition,freshleads WHERE freshleads.Status = disposition.dispid AND agent_user.agid = freshleads.User AND  client_user.cltid = freshleads.Buyer AND campaigns.cmp_id = freshleads.campaignid AND center_user.cenid = freshleads.Cent_id ".$strcond." AND freshleads.User = '". $_SESSION['sessAgentID']."' ORDER BY freshleads.Reference DESC ";
+	 $qryString = "SELECT  agent_user.ag_fname,agent_user.ag_lname,client_user.clt_alias,client_user.clt_comp,campaigns.cmp_name,center_user.cen_comp,disposition.dispname,freshleads.Reference,freshleads.ReceivedDateTime,freshleads.Title,freshleads.FirstName,freshleads.MiddleNames,freshleads.LastName,freshleads.TransferDateTime,freshleads.Telephone1,freshleads.Telephone2,freshleads.Mobile,freshleads.Email,freshleads.Address,freshleads.Address2,freshleads.Address3,freshleads.TownCity,freshleads.stateName,freshleads.Postcode,freshleads.Data1,freshleads.Data2,freshleads.Data3,freshleads.Data4,freshleads.Data5,freshleads.Data6,freshleads.Data7,freshleads.Data8,freshleads.LastNote,freshleads.TransferDateTime,freshleads.Data9,freshleads.Data10,freshleads.Data11,freshleads.Data12,freshleads.Data13,freshleads.Data14,freshleads.Data15,freshleads.Data16,freshleads.Data17,freshleads.Data18,freshleads.Data19,freshleads.Data20,freshleads.Data21,freshleads.Data22,freshleads.Data23,freshleads.Data24,freshleads.Data25,freshleads.Data26,freshleads.Data27,freshleads.Data28,freshleads.Data29,freshleads.Data30,freshleads.Data31,freshleads.Data32,freshleads.Data33,freshleads.Data34,freshleads.Data35,freshleads.Data36,freshleads.Data37,freshleads.Data38,freshleads.Data39,freshleads.Data40,freshleads.Data41,freshleads.Data42,freshleads.Data43,freshleads.Data44,freshleads.Data45,freshleads.Data46,freshleads.Data47,freshleads.Data48,freshleads.Data49,freshleads.Data50,freshleads.transfer_to,freshleads.comments FROM agent_user ,center_user ,campaigns ,client_user ,disposition,freshleads WHERE freshleads.Status = disposition.dispid AND agent_user.agid = freshleads.User AND  client_user.cltid = freshleads.Buyer AND campaigns.cmp_id = freshleads.campaignid AND center_user.cenid = freshleads.Cent_id ".$strcond." AND freshleads.User = '". $_SESSION['sessAgentID']."' ORDER BY freshleads.Reference DESC ";
 
 
-$statsqry = "SELECT disposition.dispname,count(freshleads.`Reference`) stats FROM `freshleads`,disposition  WHERE freshleads.`Status` = disposition.dispid AND freshleads.User=".$_SESSION['sessAgentID']." ".$strcond."  GROUP By disposition.dispid";
+$statsqry = "SELECT disposition.dispname,count(freshleads.`Reference`) stats,freshleads.Status as status FROM `freshleads`,disposition  WHERE freshleads.`Status` = disposition.dispid AND freshleads.User=".$_SESSION['sessAgentID']."  GROUP By disposition.dispid";
 
 
 
 $stats = $sqli->get_selectData($statsqry);
-
-
-	//$dataLists = $sqli->get_selectData($qryString);
+	
 	$items_per_page=5;
 	
 
@@ -150,13 +149,13 @@ $pager -> opt_links_count 					    = 5;
 	<tr>
     <td width="20%" align="right" nowrap="nowrap">Lead ID:</td>
     <td width="30%" align="left">
-      <input type="text" class="required textbox" name="str_leadid" size="30" id="str_leadid" c/></td>
+      <input type="text" class="required textbox" name="str_leadid" <?php if($_REQUEST['str_leadid']!=""){ ?> value="<?php echo $_REQUEST['str_leadid']; ?>"  <?php } ?> id="str_leadid" c/></td>
     <td width="10%" align="right" valign="top">First Name:</td>
-    <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_firstName" size="30" id="str_firstName"/></td>
+    <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_firstName" <?php if($_REQUEST['str_firstName']!=""){ ?> value="<?php echo $_REQUEST['str_firstName']; ?>"  <?php } ?>  id="str_firstName"/></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Phone Number:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_phone" size="30" id="str_phone"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_phone" <?php if($_REQUEST['str_phone']!=""){ ?> value="<?php echo $_REQUEST['str_phone']; ?>"  <?php } ?>  id="str_phone"/></td>
       <td width="10%" align="right" valign="top">Campaign:</td>
       <td width="40%" align="left" valign="top"><select name="dd_camp" id="dd_camp">
         <option value="" selected="selected">- Select -</option>
@@ -165,15 +164,15 @@ $pager -> opt_links_count 					    = 5;
 $datacamp=$sqli->get_selectData($strQuery3); 
 	
 	 foreach($datacamp as $key=>$valuecamp){?>
-        <option value="<?php echo $valuecamp['cmp_id'];?>"> <?php echo $valuecamp['cmp_name'];?></option>
+        <option <?php if($_REQUEST['dd_camp']==$valuecamp['cmp_id']) echo "Selected" ?> value="<?php echo $valuecamp['cmp_id'];?>"> <?php echo $valuecamp['cmp_name'];?></option>
         <?php }?>
       </select></td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap">Date From:</td>
-      <td align="left"><input type="text" class="required textbox" name="str_date_from" size="30" id="strlast_edit_date_from"/></td>
+      <td align="left"><input type="text" class="required textbox" name="str_date_from" <?php if($_REQUEST['str_date_from']!=""){ ?> value="<?php echo $_REQUEST['str_date_from']; ?>"  <?php } ?>  id="strlast_edit_date_from"/></td>
       <td width="10%" align="right" valign="top">Date To:</td>
-      <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_date_To" size="30" id="strlast_edit_date_to"/></td>
+      <td width="40%" align="left" valign="top"><input type="text" class="required textbox" name="str_date_To" <?php if($_REQUEST['str_date_To']!=""){ ?> value="<?php echo $_REQUEST['str_date_To']; ?>"  <?php } ?>   id="strlast_edit_date_to"/></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap"> Status:</td>
@@ -184,7 +183,7 @@ $datacamp=$sqli->get_selectData($strQuery3);
 		$strQuery5="select * from disposition where 1";
 		$datast=$sqli->get_selectData($strQuery5); 
 		 foreach($datast as $key=>$valuest){?>
-         <option value="<?php echo $valuest['dispid'];?>"> <?php echo $valuest['dispname'];?></option>
+         <option <?php if($_REQUEST['dd_status']==$valuest['dispid']) echo "Selected" ?> value="<?php echo $valuest['dispid'];?>"> <?php echo $valuest['dispname'];?></option>
          <?php }?>
        </select>
       </td>
@@ -196,7 +195,7 @@ $datacamp=$sqli->get_selectData($strQuery3);
 $datastate=$sqli->get_selectData($strQuery14); 
 	
 	 foreach($datastate as $key=>$valuestate){?>
-        <option value="<?php echo $valuestate['zone_id'];?>"> <?php echo $valuestate['name'];?></option>
+        <option <?php if($_REQUEST['dd_stateName']==$valuestate['zone_id']) echo "Selected" ?> value="<?php echo $valuestate['zone_id'];?>"> <?php echo $valuestate['name'];?></option>
         <?php }?>
       </select></td>
     </tr>
@@ -215,8 +214,8 @@ $datastate=$sqli->get_selectData($strQuery14);
      <tr>
        <td align="right" nowrap="nowrap">&nbsp;</td>
        <td align="right"><input type="submit" name="Search" id="Search" value="Search"/></td>
-       <td width="10%" align="right" valign="top">&nbsp;</td>
-       <td width="40%" align="left" valign="top">&nbsp;</td>
+       <td width="10%" align="right" valign="top"><input type="submit" name="Reset" id="Search" value="Reset" /></td>
+       <td width="40%" align="left" valign="top"></td>
      </tr>
     </table>
      </fieldset>
@@ -230,30 +229,18 @@ $datastate=$sqli->get_selectData($strQuery14);
     <th>Count</th>
   </tr>
   <?php foreach($stats as $stat){ ?>
-      
-        
   <tr>
-    <td  align="center"><?php echo $stat['dispname']; ?></td>
+    <td  align="center"><a href="listlead.php?&dd_status=<?php echo $stat['status']; ?>&Search=Search"><?php echo $stat['dispname']; ?></a></td>
     <td align="center"><?php echo $stat['stats']; ?></td>
   </tr>
    <?php }  ?>  
 </table>
-
     </fieldset>
-    
-  
-    
     </td>
  	 </tr>
      </table>
-  
-     
      </fieldset><br> <br></div>
-      
-
-     
      <!-- search end -->
-        
          <table id="rounded-corner" summary="List of Forms">
     <thead>
     	<tr>
@@ -266,6 +253,7 @@ $datastate=$sqli->get_selectData($strQuery14);
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Center</strong></th>
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Transfer Date</strong></th>
             <th align="center" nowrap="nowrap" class="rounded" scope="col"><strong>Status</strong></th>
+            <th align="center" nowrap="nowrap" class="rounded" scope="col"><strong>Campaign</strong></th>
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Last Note</strong></th>
             <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>View</strong></th>
              <th align="left" nowrap="nowrap" class="rounded" scope="col"><strong>Edit</strong></th>
@@ -302,8 +290,7 @@ $datastate=$sqli->get_selectData($strQuery14);
         	</tr>
     </tfoot>
     <tbody>
-    	 <?php $i=1; foreach($pager->getPage() as $key=>$row) {
-						?>
+    	 <?php $i=1; foreach($pager->getPage() as $key=>$row) { ?>
       	<tr align="left">
         	<td ><input type="checkbox" name="" /></td>
             <td ><?php echo ($pagen*$items_per_page+$i);$i++; ?></td>
@@ -315,6 +302,7 @@ $datastate=$sqli->get_selectData($strQuery14);
             <td>
 			<?php echo date("m-d-Y", strtotime($row['TransferDateTime'])); ?></td>
              <td align="left"><?php echo $row['dispname']; ?></td>
+            <td><?php echo $row['cmp_name']; ?></td>
             <td><?php echo $row['LastNote']; ?></td>
             <td class="centedtd">
             <a  id="data<?php echo $row['Reference'];?>" href="#" onclick="parent.L('#data<?php echo $row['Reference'];?>').colorbox({iframe:true, innerWidth:1200, innerHeight:500,href:'view_lead.php?refID=<?PHP echo $row['Reference']; ?>'});"><img src="images/search.png" alt="" title="" border="0" /></a>
@@ -327,16 +315,8 @@ $datastate=$sqli->get_selectData($strQuery14);
          <?php }  ?>
     </tbody>
 </table>
-        
-        
       </div><!-- end of right content-->
-            
-                    
-  </div>   <!--end of center content -->               
-                    
-                    
-    
-    
+  </div>   <!--end of center content -->
     <div class="clear"></div>
     </div> <!--end of main content-->
 	<style>.approved{ width:16px;height:17px;display:inline-block;background-image:url(images/status-icon.png);background-repeat:no-repeat;background-position:0px 0px; margin-top:5px;}</style>

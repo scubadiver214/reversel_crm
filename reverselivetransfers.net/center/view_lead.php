@@ -7,7 +7,7 @@ if(isset($_GET['refID']))
 {
 $strQuery1 ="Select * from freshleads where Reference='".$_GET['refID']."' AND freshleads.Cent_id = '". $_SESSION['sessCenterID']."' ";
 $data=$sqli->get_selectData($strQuery1);
-//echo $data[0]['company_name'];
+
 }
 
  ?>
@@ -36,11 +36,7 @@ JQ(document).ready(function() {
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><h2>Lead Form Details</h2></td>
-    <td align="right">
-   <!-- <a href="update_form.php?refID=<?PHP echo $data[0]['Reference']; ?>"><img src="images/list-details.png" alt="" title="Update" border="0" /></a>
    
-    <a href="listlead.php"><img src="images/list-details.png" alt="" title="List" border="0" /></a>-->
-    </td>
   </tr>
 </table>
 
@@ -63,7 +59,7 @@ JQ(document).ready(function() {
  	  <!--part1-->
      <tr>
     <td>
-     <fieldset>
+      <fieldset>
     <legend>Personal details</legend>
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%" style="font-size:13px;">
 	<tr>
@@ -108,7 +104,6 @@ JQ(document).ready(function() {
     </tr>
      </table>
      </fieldset>
-    <?php //include("headerlead.php"); ?>
     
     </td>
  	 </tr>
@@ -116,7 +111,7 @@ JQ(document).ready(function() {
      
     <tr>
     <td>
-     <?php //include("mca.php"); ?>
+     
      <fieldset>
      <?php
 	$strQuery1="select * from campaigns where cmp_id='".$data[0]['campaignid']."'";
@@ -151,9 +146,9 @@ JQ(document).ready(function() {
      <!--part3--> 
     <tr>
     <td>
-     <?php //include("footerlead.php"); ?>
+    
     <fieldset>
-    <legend>Agnent View</legend>
+    <legend>Agent View</legend>
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%" style="font-size:13px;">
 	<tr>
     <td width="20%" align="right" valign="top" nowrap="nowrap"><strong>Agent Name:</strong></td>
@@ -191,4 +186,3 @@ JQ(document).ready(function() {
     </div> <!--end of main content
 	
     <?php include("includes/footer.php"); ?>-->
-   

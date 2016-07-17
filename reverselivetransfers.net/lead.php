@@ -63,7 +63,7 @@ if(isset($_POST['Continue']))
 			 	*/ 
 				 if(count($data4)==0&&count($data44)==0)
 				 {
-					 array_push($_SESSION['message'],"Please Complete the details from.");
+					 array_push($_SESSION['message'],"Please Complete the Add New Lead Form.");
 				 }
 				 else
 				 {
@@ -75,10 +75,8 @@ if(isset($_POST['Continue']))
 		
 }
 	
-if(isset($_POST['submit']))
-{
-	
-				
+			if(isset($_POST['submit']))
+			{
 				if($_POST['dd_Title']=="")
 				{
 						array_push($_SESSION['errmessage'],"Please Select Title.");
@@ -91,14 +89,17 @@ if(isset($_POST['submit']))
 				{
 						array_push($_SESSION['errmessage'],"Last Name Must be Filled in correct Format.");
 				}
-				
+				if($_POST['age']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Age is required.");
+				}
 				if($_POST['str_Telephone1']=="" )
 				{			
 						array_push($_SESSION['errmessage'],"Phone Number Must be Filled in correct format.");
 				}
-				if($_POST['str_Email']==""  )
+				if($_POST['str_Email']!="" && !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL)) 
 				{
-						array_push($_SESSION['errmessage'],"Email Must be Filled in correct Format.");
+						array_push($_SESSION['errmessage'],"Email is not required. But if provided, it must be entered in the correct Format.");
 				}
 				if($_POST['dd_stateName']=="")
 				{
@@ -126,16 +127,34 @@ if(isset($_POST['submit']))
             
             $insertInformation['Title2']	    =	$_POST['dd_Title2'];
 			$insertInformation['FirstName2']	=	$_POST['str_FirstName2'];
-			$insertInformation['LastName2']	    =	$_POST['str_LastName2'];            
-            $insertInformation['dob1']	        =	$_POST['str_dob1'];
+			$insertInformation['LastName2']	    =	$_POST['str_LastName2'];     
+
+			if($_POST['str_dob1']!=""){
+				$dates = explode('-', $_POST['str_dob1']);
+				$month = $dates[0];
+				$day = $dates[1];
+				$year = $dates[2];
+				$finalDob = $year.'-'.$month.'-'.$day;
+				$insertInformation['dob1']	        =	$finalDob;
+			}
           
             if($_POST['str_dob2']!=""){
-              
-			$insertInformation['dob2']	        =	$_POST['str_dob2'];
-		       }     
+				$dates2 = explode('-', $_POST['str_dob2']);
+				$month2 = $dates2[0];
+				$day2 = $dates2[1];
+				$year2 = $dates2[2];
+				$finalDob2 = $year2.'-'.$month2.'-'.$day2;
+				$insertInformation['dob2'] =	$finalDob2;
+			}     
+
 			$insertInformation['Telephone1']	=	$_POST['str_Telephone1'];
 			$insertInformation['Telephone2']	=	$_POST['str_Telephone2'];		
 			$insertInformation['Email']	    =	$_POST['str_Email'];
+			$insertInformation['age']	    =	$_POST['age'];
+
+			if($_POST['age2']!= ""){
+				$insertInformation['age2']	    =	$_POST['age2'];
+			}
 			$insertInformation['Address']	=	$_POST['str_Address'];
 			$insertInformation['TownCity']	=	$_POST['str_TownCity'];
 			$insertInformation['Postcode']	=	$_POST['str_Postcode'];
@@ -179,14 +198,11 @@ if(isset($_POST['submit']))
 				
 				$sqli									->	commit();
 				array_push($_SESSION['message'],"Data Successfully Saved.");
+				$_POST = array();	
 			}
-            
-            
-            
-			//pageRedirection("listlead.php");	
-	
+            header("Location: listlead.php");
+			exit();	
 	}
-	
 }
 
 ?>

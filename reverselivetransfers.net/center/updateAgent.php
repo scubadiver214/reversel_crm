@@ -150,42 +150,42 @@ JQ(document).ready(function() {
   </tr>
    <tr>
     <td>Password <span class="err">*</span>:</td>
-    <td><input type="password" class="required textbox" id="str_ag_password" name="str_ag_password" size="30" /></td>
+    <td><input type="password" class="required textbox" id="str_ag_password" name="str_ag_password"  /></td>
     <td>Confirm Password <span class="err">*</span>:</td>
-    <td><input type="password" class="required textbox" id="confirmpassword" name="confirmpassword" size="30"  /></td>
+    <td><input type="password" class="required textbox" id="confirmpassword" name="confirmpassword"   /></td>
 	
 
 	<tr>
 	  <td>First Name <span class="err">*</span>:</td>
-	  <td><input type="text" class="required textbox" name="str_ag_fname" id="str_ag_fname" size="30" value= "<?php echo  $data[0]['ag_fname']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_fname" id="str_ag_fname"  value= "<?php echo  $data[0]['ag_fname']; ?>"/></td>
 	  <td>Last Name <span class="err">*</span>:</td>
-	  <td><input type="text" class="required textbox" name="str_ag_lname" id="str_ag_lname" size="30"  value= "<?php echo  $data[0]['ag_lname']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_lname" id="str_ag_lname"   value= "<?php echo  $data[0]['ag_lname']; ?>"/></td>
 	  </tr>
 	<tr>
 	  <td align="left">Mobile:</td>
-	  <td><input type="text" class="required textbox" name="str_ag_mobile" id="str_ag_mobile" size="30" value= "<?php echo  $data[0]['ag_mobile']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_mobile" id="str_ag_mobile"  value= "<?php echo  $data[0]['ag_mobile']; ?>"/></td>
 	  <td>Phone :</td>
-	  <td><input type="text" class="required textbox" name="str_ag_phone" id="str_ag_phone" size="30"  value= "<?php echo  $data[0]['ag_phone']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_phone" id="str_ag_phone"   value= "<?php echo  $data[0]['ag_phone']; ?>"/></td>
 	  </tr>
 	<tr>
 	  <td valign="top">Fax :</td>
-	  <td valign="top"><input type="text" class="required textbox" name="str_ag_fax" id="str_ag_fax" size="30" value= "<?php echo  $data[0]['ag_fax']; ?>"/></td>
+	  <td valign="top"><input type="text" class="required textbox" name="str_ag_fax" id="str_ag_fax"  value= "<?php echo  $data[0]['ag_fax']; ?>"/></td>
 	  <td valign="top">Address :</td>
 	  <td rowspan="3"><textarea name="str_ag_address" cols="32" rows="5" class="" id="str_ag_address"><?php echo  $data[0]['ag_address']; ?></textarea></td>
 	  </tr>
 	<tr>
 	  <td>City :</td>
-	  <td><input type="text" class="required textbox" name="str_ag_city" id="str_ag_city" size="30"  value= "<?php echo  $data[0]['ag_city']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_city" id="str_ag_city"   value= "<?php echo  $data[0]['ag_city']; ?>"/></td>
 	  <td>&nbsp;</td>
 	  </tr>
 	<tr>
 	  <td>State :</td>
-	  <td><input type="text" class="required textbox" name="str_ag_state" id="str_ag_state" size="30"  value= "<?php echo  $data[0]['ag_state']; ?>"/></td>
+	  <td><input type="text" class="required textbox" name="str_ag_state" id="str_ag_state"   value= "<?php echo  $data[0]['ag_state']; ?>"/></td>
 	  <td>&nbsp;</td>
 	  </tr>
 	<tr>
 	  <td valign="top">Country :</td>
-	  <td valign="top"><input type="text" class="required textbox" name="str_ag_country" id="str_ag_country" size="30" value= "<?php echo  $data[0]['ag_country']; ?>"/></td>
+	  <td valign="top"><input type="text" class="required textbox" name="str_ag_country" id="str_ag_country"  value= "<?php echo  $data[0]['ag_country']; ?>"/></td>
 	  <td valign="top">Agent Details :</td>
 	  <td><textarea name="str_ag_detail" id="str_ag_detail" cols="32" rows="5"><?php echo  $data[0]['ag_detail']; ?></textarea></td>
 	  </tr>
