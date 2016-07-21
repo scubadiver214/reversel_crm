@@ -45,6 +45,16 @@ K(function($) {
 		     K('.jclock').jclock();
 });
 </script>
+
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy', yearRange: '1900:2000'});
+    $( "#datepicker1" ).datepicker({changeMonth: true,changeYear: true,dateFormat: 'mm-dd-yy',  yearRange: '1900:2000'});
+  });
+  </script>
 <link type="text/css" href="../jquery/css/flick/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="jquery/js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="jquery/js/jquery-ui-1.8.16.custom.min.js"></script><script>

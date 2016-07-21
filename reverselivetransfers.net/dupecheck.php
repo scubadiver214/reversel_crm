@@ -6,7 +6,6 @@ $pagename = "lead.php";
 include("includes/header.php");
 
 ?>
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
 <script src="js/jquery.metadata.js" type="text/javascript"></script>
 <style type="text/css">
 label.error { float: left;

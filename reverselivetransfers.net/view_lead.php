@@ -36,7 +36,7 @@ JQ(document).ready(function() {
   <tr>
     <td><h2>Lead  Details</h2></td>
     <td align="right">
-      <img src="images/printbutton2-md.png" alt="" title="Print" onclick="javascript:print();" style="height:30px; width=40px; cursor: pointer; margin-right: 10px;" border="0" />
+      &nbsp;
   </tr>
 </table>
 

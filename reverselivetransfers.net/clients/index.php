@@ -56,7 +56,7 @@ if(isset($_REQUEST['Go']))
 <div class="menu"><?php include("includes/menu.php");?> </div> 
 <div class="center_content">
  
-             <div class="right_content"><h2>Client Dashboard</h2>
+             <div class="right_content"><h2>Customer Dashboard</h2>
 <?php  foreach($_SESSION['message'] as $msg){ ?>
         <div class="valid_box">
         <?php echo $msg; ?>

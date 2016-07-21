@@ -51,11 +51,29 @@
       <td width="30%" align="left"><input type="text" name="age2" size="3" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $_POST['age2']?>"/></td>
     </tr>
     <!-- dob -->
+    <?php
+      $datesFormatted1 = "";
+      $datesFormatted2 = "";         
+      if($_POST['str_dob1']){
+        $datesFormatted1 = explode('-', $_POST['str_dob1']);
+				$monthFormatted1 = $datesFormatted1[2];
+				$dayFormatted1 = $datesFormatted1[1];
+				$yearFormatted1 = $datesFormatted1[0];
+				$dobFormatted1 = $dayFormatted1.'-'.$monthFormatted1.'-'.$yearFormatted1;
+      } 
+      if($_POST['str_dob2']){
+        $datesFormatted2 = explode('-', $_POST['str_dob2']);
+				$monthFormatted2 = $datesFormatted2[2];
+				$dayFormatted2 = $datesFormatted2[1];
+				$yearFormatted2 = $datesFormatted2[0];
+				$dobFormatted2 = $dayFormatted2.'-'.$monthFormatted2.'-'.$yearFormatted2;
+      }
+      ?>
      <tr>
       <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1):</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" readonly="readonly" value="<?php echo $_POST['str_dob1']?>"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" readonly="readonly" value="<?php echo $datesFormatted1; ?>"/></td>
       <td width="20%" align="right" valign="top">Date of Birth(Senior 2):</td>
-      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" value="<?php echo $_POST['str_dob2']?>" id="datepicker1"/></td>
+      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" value="<?php echo $datesFormatted2; ?>" id="datepicker1"/></td>
     </tr>
     <!-- phone number -->
     <tr>

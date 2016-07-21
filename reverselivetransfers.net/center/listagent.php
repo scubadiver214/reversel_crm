@@ -132,7 +132,7 @@ $pager -> opt_links_count 					    = 5;
         
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><h2>Agents of <?PHP echo $datacenter[0]['cen_comp']; ?></h2></td>
+    <td><h2>Add New Agents of <?PHP echo $datacenter[0]['cen_comp']; ?></h2></td>
     <td align="right"><a href="agent_user.php"><img src="images/add-details.png" alt="" title="Add New Agent" border="0" /></a></td>
   </tr>
 </table>

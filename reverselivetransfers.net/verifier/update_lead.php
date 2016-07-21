@@ -5,31 +5,40 @@ include("_dataAccess.php");
 
 if(isset($_POST['submit']))
 {				                          
-                
-                if($_POST['dd_Title']=="")
-				{
-						array_push($_SESSION['errmessage'],"Please Select Title.");
-				}
-				if($_POST['str_FirstName']==""  )
-				{
-						array_push($_SESSION['errmessage'],"Please Fill First Name .");
-				}
-				if($_POST['str_LastName']=="" )
-				{
-						array_push($_SESSION['errmessage'],"Please Fill Last Name .");
-				}
-				
 				if($_POST['str_Telephone1']=="" )
 				{			
-						array_push($_SESSION['errmessage'],"Please Fill Phone Number.");
+						array_push($_SESSION['errmessage'],"Phone Number Must be Filled in correct format.");
 				}
-				if($_POST['str_Email']=="" || !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL) )
-				{
-						array_push($_SESSION['errmessage'],"Email Must be Filled in correct Format.");
-				}
+				
 				if($_POST['dd_stateName']=="")
 				{
 						array_push($_SESSION['errmessage'],"Please Select State.");
+				}
+
+				if($_POST['str_Email']!="" && !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL)) 
+				{
+						array_push($_SESSION['errmessage'],"Email is not required. But if provided, it must be entered in the correct Format.");
+				}
+							if($_POST['age']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Age is required.");
+				}
+			
+				if($_POST['dd_Title']=="")
+				{
+						array_push($_SESSION['errmessage'],"Please Select Title.");
+				}
+				if($_POST['str_FirstName']=="" )
+				{
+						array_push($_SESSION['errmessage'],"First Name Must be Filled in correct Format.");
+				}
+				if($_POST['str_LastName']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Last Name Must be Filled in correct Format.");
+				}
+				if($_POST['age']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Age is required.");
 				}
 			
 			if(count($_SESSION['errmessage'])==0)
@@ -42,10 +51,33 @@ if(isset($_POST['submit']))
             $updateInformation['Title2']	    =	$_POST['dd_Title2'];
 			$updateInformation['FirstName2']	=	$_POST['str_FirstName2'];
 			$updateInformation['LastName2']	    =	$_POST['str_LastName2'];            
-            $updateInformation['dob1']	        =	$_POST['str_dob1'];
-            if($_POST['str_dob2']!=""){
-			$updateInformation['dob2']	        =	$_POST['str_dob2'];
-		      }      
+      $updateInformation['Buyer']	    =	$_POST['dd_Buyer'];
+
+			if($_POST['str_dob1']!=""){
+				$dates = explode('-', $_POST['str_dob1']);
+				$month = $dates[0];
+				$day = $dates[1];
+				$year = $dates[2];
+				$finalDob = $year.'-'.$month.'-'.$day;
+				$updateInformation['dob1']	        =	$finalDob;
+			}
+          
+      if($_POST['str_dob2']!=""){
+				$dates2 = explode('-', $_POST['str_dob2']);
+				$month2 = $dates2[0];
+				$day2 = $dates2[1];
+				$year2 = $dates2[2];
+				$finalDob2 = $year2.'-'.$month2.'-'.$day2;
+				$updateInformation['dob2'] =	$finalDob2;
+			}    
+
+			$updateInformation['age']	    =	$_POST['age'];
+
+			if($_POST['age2']!= ""){
+				$updateInformation['age2']	    =	$_POST['age2'];
+			}
+
+
 			$updateInformation['Telephone1']	=	$_POST['str_Telephone1'];
 			$updateInformation['Telephone2']	=	$_POST['str_Telephone2'];		
 			$updateInformation['Email']	        =	$_POST['str_Email'];
@@ -78,9 +110,10 @@ if(isset($_POST['submit']))
 				{
 						$sqli									->	commit();
 						array_push($_SESSION['message'],"Data Successfully Saved.");
-				pageRedirection("listlead.php");
+            $_POST = array();	
 				}			
-			exit;
+		    header("Location: listlead.php");
+			  exit();	
 	}
 		
 	
@@ -96,7 +129,6 @@ $ref= $data[0]['Reference'];
 }
 
  ?>
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
 <script src="js/jquery.metadata.js" type="text/javascript"></script>
 <style type="text/css">
 label.error { float: left;
@@ -160,7 +192,7 @@ JQ(document).ready(function() {
 	$strQuery1="select * from client_user where clt_status=1";
 	$datac=$sqli->get_selectData($strQuery1); 	
 	 foreach($datac as $key=>$valuec){?>         
-  <option value="<?php echo $valuec['cltid'];?>"<?php if($data[0]['Buyer']==$valuec['cltid']) echo "selected=\"selected\"" ?>> <?php echo $valuec['clt_comp'];?></option>
+  <option  value="<?php echo $valuec['cltid'];?>"<?php if($data[0]['Buyer']==$valuec['cltid']) echo "selected=\"selected\"" ?>> <?php echo $valuec['clt_comp'];?></option>
   <?php }?>
          </select>
     </td>
@@ -176,8 +208,7 @@ JQ(document).ready(function() {
     <td>
       <fieldset>
      
-  
-    <input type="hidden" class="small-textbox" name="refid" id="refid" value="<?php echo $data[0]['Reference']?>"/>
+  <input type="hidden" class="small-textbox" name="refid" id="refid" value="<?php echo $data[0]['Reference']?>"/>
     <legend>Personal details </legend>
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%">
 	<tr>
@@ -193,11 +224,11 @@ JQ(document).ready(function() {
     </select>
       <input type="text" class="small-textbox" name="str_FirstName" size="24" id="str_FirstName" value="<?php echo $data[0]['FirstName']?>"/></td>
     <td width="20%" align="right" valign="top">Last Name(Senior 1)<span class="err">*:</span></td>
-    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName"  id="str_LastName" value="<?php echo $data[0]['LastName']?>"/></td>
+    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName" size="30" id="str_LastName" value="<?php echo $data[0]['LastName']?>"/></td>
     </tr>
     
     	<tr>
-    <td width="20%" align="right" nowrap="nowrap">First Name(Senior 2)<span class="err">*</span>:</td>
+    <td width="20%" align="right" nowrap="nowrap">First Name(Senior 2):</td>
     <td width="30%" align="left"><select name="dd_Title2" id="dd_Title" class="small-select">
       <option value="" selected="selected">Title</option>
      <option value="Mr" <?php if($data[0]['Title2']=="Mr") echo "selected=\"selected\"" ?>>Mr</option>
@@ -208,32 +239,59 @@ JQ(document).ready(function() {
       <option value="Prof" <?php if($data[0]['Title2']=="Prof") echo "selected=\"selected\"" ?>>Prof</option>
     </select>
       <input type="text" class="small-textbox" name="str_FirstName2" size="24" id="str_FirstName" value="<?php echo $data[0]['FirstName2']?>"/></td>
-    <td width="20%" align="right" valign="top">Last Name(Senior 2)<span class="err">*:</span></td>
-    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName2"  id="str_LastName" value="<?php echo $data[0]['LastName2']?>"/></td>
+    <td width="20%" align="right" valign="top">Last Name(Senior 2):</td>
+    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName2" size="30" id="str_LastName" value="<?php echo $data[0]['LastName2']?>"/></td>
     </tr>
+        <!-- age -->
+    <tr>
+      <td width="20%" align="right" nowrap="nowrap">Age (Senior 1)<span class="err">*</span>:</td>
+      <td width="30%" align="left"><input type="text" class="required textbox"  name="age" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age'];?>"/></td>
+      <td width="20%" align="right" nowrap="nowrap">Age (Senior 2):</td>
+      <td width="30%" align="left"><input type="text" name="age2" size="3" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age2'] ? $data[0]['age2'] : $_POST['age2'];?>"/></td>
+    </tr>
+
+  <!-- dob -->
+     <?php         
+      $datesFormatted1 = "";
+      $datesFormatted2 = "";    
+      if($data[0]['dob1']){
+        $datesFormatted1 = explode('-', $data[0]['dob1']);
+				$monthFormatted1 = $datesFormatted1[2];
+				$dayFormatted1 = $datesFormatted1[1];
+				$yearFormatted1 = $datesFormatted1[0];
+				$dobFormatted1 = $dayFormatted1.'-'.$monthFormatted1.'-'.$yearFormatted1;
+      }
+      if($data[0]['dob2']){
+        $datesFormatted2 = explode('-', $data[0]['dob2']);
+				$monthFormatted2 = $datesFormatted2[2];
+				$dayFormatted2 = $datesFormatted2[1];
+				$yearFormatted2 = $datesFormatted2[0];
+				$dobFormatted2 = $dayFormatted2.'-'.$monthFormatted2.'-'.$yearFormatted2;
+      }
+?>
      <tr>
-      <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1)<span class="err">*</span>:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1"  id="datepicker" value="<?php echo $data[0]['dob1'];?>"/></td>
+      <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1):</td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" value="<?php echo $dobFormatted1;?>"/></td>
       <td width="20%" align="right" valign="top">Date of Birth(Senior 2):</td>
-      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2"  id="datepicker1" value="<?php echo $data[0]['dob2'];?>"/></td>
+      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" id="datepicker1" value="<?php echo $dobFormatted2;?>"/></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Phone Number<span class="err">*</span>:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Telephone1"  id="str_Telephone1" readonly="readonly" value="<?php echo $data[0]['Telephone1']?>"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Telephone1" size="30" id="str_Telephone1" readonly="readonly" value="<?php echo $data[0]['Telephone1']?>"/></td>
       <td width="20%" align="right" valign="top">Town/City:</td>
-      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_TownCity"  id="str_TownCity" value="<?php echo $data[0]['TownCity']?>"/></td>
+      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_TownCity" size="30" id="str_TownCity" value="<?php echo $data[0]['TownCity']?>"/></td>
     </tr>
     
     
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Alternative Phone Number:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Telephone2"  id="str_Telephone2" value="<?php echo $data[0]['Telephone2']?>"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Telephone2" size="30" id="str_Telephone2" value="<?php echo $data[0]['Telephone2']?>"/></td>
       <td width="20%" rowspan="2" align="right" valign="top">Property Address:</td>
       <td width="30%" rowspan="2" align="left" valign="top"><textarea name="str_Address" cols="33" rows="5" class="" id="str_Address"><?php echo $data[0]['Address']?></textarea></td>
     </tr>
     <tr>
-      <td width="20%" align="right" nowrap="nowrap">Email<span class="err">*</span>:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Email"  id="str_Email" value="<?php echo $data[0]['Email']?>"/></td>
+      <td width="20%" align="right" nowrap="nowrap">Email:</td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Email" size="30" id="str_Email" value="<?php echo $data[0]['Email']?>"/></td>
       </tr>
      <tr>
        <td width="20%" align="right" nowrap="nowrap">State<span class="err">*</span>:</td>
@@ -248,11 +306,11 @@ $datastate=$sqli->get_selectData($strQuery14);
          <?php }?>
          </select></td>
        <td width="20%" align="right" valign="top">Zipcode:</td>
-       <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_Postcode"  id="str_Postcode" value="<?php echo $data[0]['Postcode']?>"/></td>
+       <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_Postcode" size="30" id="str_Postcode" value="<?php echo $data[0]['Postcode']?>"/></td>
      </tr>
      </table>
      </fieldset>
-    <?php //include("headerlead.php"); ?>
+    <?php //include("leadformheader.php.php"); ?>
     
     </td>
  	 </tr>
@@ -273,7 +331,7 @@ $datastate=$sqli->get_selectData($strQuery14);
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%">
 	<tr>
     <td width="20%" align="right" valign="top" nowrap="nowrap">Agent Name:</td>
-    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_transfer_to"  id="str_transfer_to" value="<?php echo $data[0]['transfer_to']?>"/>
+    <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_transfer_to" size="30" id="str_transfer_to" value="<?php echo $data[0]['transfer_to']?>"/>
     
     </td>
      <td width="20%" align="right" valign="top" nowrap="nowrap">Comments:</td>
@@ -306,4 +364,5 @@ $datastate=$sqli->get_selectData($strQuery14);
     <div class="clear"></div>
     </div> <!--end of main content-->
 	
-    <?php include("includes/footer.php"); ?>   
+    <?php include("includes/footer.php"); ?>
+   

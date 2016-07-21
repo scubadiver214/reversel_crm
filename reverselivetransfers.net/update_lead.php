@@ -8,21 +8,31 @@ if(isset($_POST['submit']))
 				{			
 						array_push($_SESSION['errmessage'],"Phone Number Must be Filled in correct format.");
 				}
-				
 				if($_POST['dd_stateName']=="")
 				{
 						array_push($_SESSION['errmessage'],"Please Select State.");
 				}
-
 				if($_POST['str_Email']!="" && !filter_var($_POST['str_Email'], FILTER_VALIDATE_EMAIL)) 
 				{
 						array_push($_SESSION['errmessage'],"Email is not required. But if provided, it must be entered in the correct Format.");
 				}
-							if($_POST['age']=="" )
+				if($_POST['dd_Title']=="")
+				{
+						array_push($_SESSION['errmessage'],"Please Select Title.");
+				}
+				if($_POST['str_FirstName']=="" )
+				{
+						array_push($_SESSION['errmessage'],"First Name Must be Filled in correct Format.");
+				}
+				if($_POST['str_LastName']=="" )
+				{
+						array_push($_SESSION['errmessage'],"Last Name Must be Filled in correct Format.");
+				}
+				if($_POST['age']=="" )
 				{
 						array_push($_SESSION['errmessage'],"Age is required.");
 				}
-			
+
 			if(count($_SESSION['errmessage'])==0) {		
 			$sqli->table='freshleads';
 			$updateInformation['Title']	        =	$_POST['dd_Title'];
@@ -38,7 +48,7 @@ if(isset($_POST['submit']))
 				$day = $dates[1];
 				$year = $dates[2];
 				$finalDob = $year.'-'.$month.'-'.$day;
-				$insertInformation['dob1']	        =	$finalDob;
+				$updateInformation['dob1']	        =	$finalDob;
 			}
           
       if($_POST['str_dob2']!=""){
@@ -47,13 +57,13 @@ if(isset($_POST['submit']))
 				$day2 = $dates2[1];
 				$year2 = $dates2[2];
 				$finalDob2 = $year2.'-'.$month2.'-'.$day2;
-				$insertInformation['dob2'] =	$finalDob2;
+				$updateInformation['dob2'] =	$finalDob2;
 			}    
 
-			$insertInformation['age']	    =	$_POST['age'];
+			$updateInformation['age']	    =	$_POST['age'];
 
 			if($_POST['age2']!= ""){
-				$insertInformation['age2']	    =	$_POST['age2'];
+				$updateInformation['age2']	    =	$_POST['age2'];
 			}
 			$updateInformation['Telephone1']	=	$_POST['str_Telephone1'];
 			$updateInformation['Telephone2']	=	$_POST['str_Telephone2'];		
@@ -87,23 +97,21 @@ if(isset($_POST['submit']))
 				{
 						$sqli									->	commit();
 						array_push($_SESSION['message'],"Data Successfully Saved.");
-				pageRedirection("listlead.php");
+							$_POST = array();	
 				}			
-			exit;
+      header("Location: listlead.php");
+			exit();	
 	}
 }
 
 ?>
 <?php include("includes/header.php");
-if(isset($_GET['refID']))
-{
-$strQuery1 ="Select * from freshleads where Reference='".$_GET['refID']."'";
-$data=$sqli->get_selectData($strQuery1);
-$ref= $data[0]['Reference'];
-}
-
- ?>
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+  if(isset($_GET['refID'])){
+  $strQuery1 ="Select * from freshleads where Reference='".$_GET['refID']."'";
+  $data=$sqli->get_selectData($strQuery1);
+  $ref= $data[0]['Reference'];
+  }
+?>
 <script src="js/jquery.metadata.js" type="text/javascript"></script>
 <style type="text/css">
 label.error { float: left;
@@ -190,21 +198,41 @@ JQ(document).ready(function() {
       <option value="Prof" <?php if($data[0]['Title2']=="Prof") echo "selected=\"selected\"" ?>>Prof</option>
     </select>
       <input type="text" class="small-textbox" name="str_FirstName2" size="24" id="str_FirstName" value="<?php echo $data[0]['FirstName2']?>"/></td>
-    <td width="20%" align="right" valign="top">Last Name(Senior 2)<span class="err">*:</span></td>
+    <td width="20%" align="right" valign="top">Last Name(Senior 2):</td>
     <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_LastName2" size="30" id="str_LastName" value="<?php echo $data[0]['LastName2']?>"/></td>
     </tr>
-        <!-- age -->
+      <!-- age -->
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Age (Senior 1)<span class="err">*</span>:</td>
       <td width="30%" align="left"><input type="text" class="required textbox"  name="age" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age'];?>"/></td>
       <td width="20%" align="right" nowrap="nowrap">Age (Senior 2):</td>
       <td width="30%" align="left"><input type="text" name="age2" size="3" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?php echo $data[0]['age2'];?>"/></td>
     </tr>
+
+  <!-- dob -->
+     <?php         
+      $datesFormatted1 = "";
+      $datesFormatted2 = "";    
+      if($data[0]['dob1']){
+        $datesFormatted1 = explode('-', $data[0]['dob1']);
+				$monthFormatted1 = $datesFormatted1[2];
+				$dayFormatted1 = $datesFormatted1[1];
+				$yearFormatted1 = $datesFormatted1[0];
+				$dobFormatted1 = $dayFormatted1.'-'.$monthFormatted1.'-'.$yearFormatted1;
+      }
+      if($data[0]['dob2']){
+        $datesFormatted2 = explode('-', $data[0]['dob2']);
+				$monthFormatted2 = $datesFormatted2[2];
+				$dayFormatted2 = $datesFormatted2[1];
+				$yearFormatted2 = $datesFormatted2[0];
+				$dobFormatted2 = $dayFormatted2.'-'.$monthFormatted2.'-'.$yearFormatted2;
+      }
+      ?>
      <tr>
       <td width="20%" align="right" nowrap="nowrap">Date of Birth(Senior 1):</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" value="<?php echo $data[0]['dob1'];?>"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_dob1" size="30" id="datepicker" value="<?php echo $dobFormatted1;?>"/></td>
       <td width="20%" align="right" valign="top">Date of Birth(Senior 2):</td>
-      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" id="datepicker1" value="<?php echo $data[0]['dob2'];?>"/></td>
+      <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_dob2" size="30" id="datepicker1" value="<?php echo $dobFormatted2;?>"/></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Phone Number<span class="err">*</span>:</td>
@@ -218,11 +246,11 @@ JQ(document).ready(function() {
       <td width="20%" align="right" nowrap="nowrap">Alternative Phone Number:</td>
       <td width="30%" align="left"><input type="text" class="required textbox" name="str_Telephone2" size="30" id="str_Telephone2" value="<?php echo $data[0]['Telephone2']?>"/></td>
       <td width="20%" rowspan="2" align="right" valign="top">Property Address:</td>
-      <td width="30%" rowspan="2" align="left" valign="top"><textarea name="str_Address" cols="33" rows="5" class="" id="str_Address"><?php echo $data[0]['Address']?></textarea></td>
+      <td width="30%" rowspan="2" align="left" valign="top"><textarea name="str_Address" cols="33" rows="5" class="" id="str_Address"><?php echo $data[0]['str_Address']?></textarea></td>
     </tr>
     <tr>
       <td width="20%" align="right" nowrap="nowrap">Email:</td>
-      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Email" size="30" id="str_Email" value="<?php echo $data[0]['Email']?>"/></td>
+      <td width="30%" align="left"><input type="text" class="required textbox" name="str_Email" size="30" id="str_Email" value="<?php echo $data[0]['str_Email']?>"/></td>
       </tr>
      <tr>
        <td width="20%" align="right" nowrap="nowrap">State<span class="err">*</span>:</td>
@@ -237,7 +265,7 @@ $datastate=$sqli->get_selectData($strQuery14);
          <?php }?>
          </select></td>
        <td width="20%" align="right" valign="top">Zipcode:</td>
-       <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_Postcode" size="30" id="str_Postcode" value="<?php echo $data[0]['Postcode']?>"/></td>
+       <td width="30%" align="left" valign="top"><input type="text" class="required textbox" name="str_Postcode" size="30" id="str_Postcode" value="<?php echo $_POST["str_Postcode"] ? $_POST["str_Postcode"] : $data[0]['Postcode'] ?>"/></td>
      </tr>
      </table>
      </fieldset>

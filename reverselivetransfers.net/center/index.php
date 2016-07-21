@@ -54,7 +54,7 @@ if(isset($_REQUEST['Go']))
 <div class="main_content">
 <div class="menu"><?php include("includes/menu.php");?> </div> 
 <div class="center_content">
-             <div class="right_content"><h2>Center Dashboard</h2>
+             <div class="right_content"><h2>Affiliate Center Manager Dashboard</h2>
 
 <form action="" method="post"><table width="100%" height="" border="0" cellspacing="0" cellpadding="0" style="width: 90%; padding-left: 8%;">
   <tr>

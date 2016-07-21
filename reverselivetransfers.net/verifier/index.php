@@ -54,14 +54,15 @@ if(isset($_REQUEST['Go']))
 <div class="main_content">
 <div class="menu"><?php include("includes/menu.php");?> </div> 
 <div class="center_content">
-             <div class="right_content"><h2>Client Dashboard</h2>
+             <div class="right_content">
+<h2>Double Verifier Dashboard</h2>
 
 <form action="" method="post"><table width="100%" height="" border="0" cellspacing="0" cellpadding="0" style="width: 90%; padding-left: 8%;">
   <tr>
     <td>From</td>
-    <td><input type="text" class="textbox" name="strlast_edit_date_from" size="30" id="strlast_edit_date_from" maxlength="30"  value="<?php echo $_REQUEST['strlast_edit_date_from']; ?>"/></td>
+    <td><input type="text" class="textbox" name="strlast_edit_date_from"  id="strlast_edit_date_from" maxlength="30"  value="<?php echo $_REQUEST['strlast_edit_date_from']; ?>"/></td>
     <td>to</td>
-    <td><input type="text" class="textbox" name="strlast_edit_date_to" size="30" id="strlast_edit_date_to" maxlength="30"  value="<?php echo $_REQUEST['strlast_edit_date_to']; ?>"/>&nbsp;&nbsp;<input name="Go" type="submit" value="Go" /></td>
+    <td><input type="text" class="textbox" name="strlast_edit_date_to"  id="strlast_edit_date_to" maxlength="30"  value="<?php echo $_REQUEST['strlast_edit_date_to']; ?>"/>&nbsp;&nbsp;<input name="Go" type="submit" value="Go" /></td>
   </tr>
 </table></form>
 

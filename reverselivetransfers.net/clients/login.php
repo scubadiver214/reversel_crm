@@ -126,7 +126,7 @@ ddaccordion.init({
      
          <div class="login_form">
          
-         <h3>Client Panel Login</h3>
+         <h3>Customer Panel Login</h3>
          
          <a href="#" class="forgot_pass">Forgot password</a> 
          
