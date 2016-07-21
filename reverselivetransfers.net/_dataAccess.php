@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
-$title = 'Reverse Live Transfer';
-$footer = 'Reverse Live Transfer';
+$title = 'Reverse Live Transfers';
+$footer = 'Reverse Live Transfers';
 require 'classes/mysqli_class.php';
 if(!isset($_SESSION['message']))
  $_SESSION['message'] = array();

@@ -19,7 +19,6 @@ $data=$sqli->get_selectData($strQuery1);
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><h2>Script List</h2></td>
-    <td align="right"><a href="script.php"><img src="images/add-details.png" alt="" title="Add New" border="0" /></a></td>
   </tr>
 </table>
         
@@ -30,10 +29,7 @@ $data=$sqli->get_selectData($strQuery1);
             <th nowrap="nowrap" class="rounded" scope="col"><strong>Sr. No.</strong></th>
             <th nowrap="nowrap" class="rounded" scope="col"><strong>Campaign Name</strong></th>
 			<th nowrap="nowrap" class="rounded" scope="col"><strong>Client Name</strong></th>
-         
-            
-           
-			
+         			
         </tr>
     </thead>
         <tfoot>

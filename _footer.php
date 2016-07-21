@@ -89,7 +89,7 @@
                     <div class="span6" id="footer-bottom-widget-area-1">                       
                         <div class="widget widget_text">                        
                             <div class="textwidget">
-                                <p class="text-uppercase "><strong>Reverse Live Transfer 2016 &copy; All rights reserved</strong></p>
+                                <p class="text-uppercase "><strong>Reverse Live Transfers 2016 &copy; All rights reserved</strong></p>
                             </div><!-- end .textwidget -->                            
                         </div><!-- end .widget_text -->                        
                     </div><!-- end .span12 -->
