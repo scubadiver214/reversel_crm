@@ -11,7 +11,7 @@ $data=$sqli->get_selectData($strQuery1);
 }
 
  ?>
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+
 <script src="js/jquery.metadata.js" type="text/javascript"></script>
 <style type="text/css">
 label.error { float: left;
@@ -58,6 +58,27 @@ JQ(document).ready(function() {
    	 <legend>View Lead</legend>
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%">
  	  <!--part1-->
+  <!-- dob -->
+     <?php         
+      $datesFormatted1 = "";
+      $datesFormatted2 = "";    
+      if($data[0]['dob1']){
+        $datesFormatted1 = explode('-', $data[0]['dob1']);
+				$monthFormatted1 = $datesFormatted1[2];
+				$dayFormatted1 = $datesFormatted1[1];
+				$yearFormatted1 = $datesFormatted1[0];
+				$dobFormatted1 = $dayFormatted1.'-'.$monthFormatted1.'-'.$yearFormatted1;
+      }
+      if($data[0]['dob2']){
+        $datesFormatted2 = explode('-', $data[0]['dob2']);
+				$monthFormatted2 = $datesFormatted2[2];
+				$dayFormatted2 = $datesFormatted2[1];
+				$yearFormatted2 = $datesFormatted2[0];
+				$dobFormatted2 = $dayFormatted2.'-'.$monthFormatted2.'-'.$yearFormatted2;
+      }
+      ?>
+
+
      <tr>
     <td>
       <fieldset>
@@ -68,13 +89,13 @@ JQ(document).ready(function() {
 	  <input name="refid" type="hidden" value="<?php echo $data[0]['Reference']; ?>" />
     <td width="30%" align="left" nowrap="nowrap"><?php echo $data[0]['Title']." ". $data[0]['FirstName']." ".$data[0]['LastName']; ?></td>
     <td width="20%" align="right"><strong>Senior1 DOB:</strong></td>
-    <td width="30%" align="left"><?php echo $data[0]['dob1']; ?></td>
+    <td width="30%" align="left"><?php echo $dobFormatted1; ?></td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap"><strong>Senior Name 2:</strong></td>
       <td align="left" nowrap="nowrap"><?php echo $data[0]['Title2']." ". $data[0]['FirstName2']." ".$data[0]['LastName2']; ?></td>
       <td align="right"><strong>Senior2 DOB:</strong></td>
-      <td align="left"><?php echo $data[0]['dob2']; ?></td>
+      <td align="left"><?php echo $dobFormatted2; ?></td>
     </tr>
             <tr>
       <td align="right" nowrap="nowrap"><strong>Senior Age 1:</strong></td>

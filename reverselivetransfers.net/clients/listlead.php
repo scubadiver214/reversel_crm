@@ -313,11 +313,24 @@ $datastate=$sqli->get_selectData($strQuery14);
             <td><?php echo $row['Title']." . ".$row['FirstName']." ".$row['LastName']; ?></td>
             <td><?php echo $row['Telephone1']; ?></td>
             <td><?php echo date("m-d-Y", strtotime($row['TransferDateTime'])); ?></td>
-          <td><a  id="datas<?php echo $row['Reference'];?>" href="#" onclick="parent.L('#datas<?php echo $row['Reference'];?>').colorbox({iframe:true, innerWidth:1200, innerHeight:500,href:'leadStatus.php?ref=<?php echo  $row['Reference'] ;?>'});"><?php echo $row['dispname']; ?></a></td>
-            
+            <?php
+              $bgColor = "";
+              if ($row['dispname'] == "Verified") {
+                   $bgColor = "background-color: yellow;";
+              }
+              if ($row['dispname'] == "Declined") {
+                   $bgColor = "background-color: red;";
+              }
+              if ($row['dispname'] == "Approved") {
+                   $bgColor = "background-color: green;";
+              }
+            ?>
+          <td style="<?php echo $bgColor; ?>"
+            <a id="datas<?php echo $row['Reference'];?>" href="#" onclick="parent.L('#datas<?php echo $row['Reference'];?>').colorbox({iframe:true, innerWidth:1200, innerHeight:500,href:'leadStatus.php?ref=<?php echo  $row['Reference'] ;?>'});"><?php echo $row['dispname']; ?></a>
+          </td>
             <td>
- <a  id="data<?php echo $row['Reference'];?>" href="#" onclick="parent.L('#data<?php echo $row['Reference'];?>').colorbox({iframe:true, innerWidth:1200, innerHeight:500,href:'view_lead.php?refID=<?PHP echo $row['Reference']; ?>'});"><img src="images/search.png" alt="" title="" border="0" /></a>            </td>
-          
+              <a  id="data<?php echo $row['Reference'];?>" href="#" onclick="parent.L('#data<?php echo $row['Reference'];?>').colorbox({iframe:true, innerWidth:1200, innerHeight:500,href:'view_lead.php?refID=<?PHP echo $row['Reference']; ?>'});"><img src="images/search.png" alt="" title="" border="0" /></a>            
+            </td>
         </tr>    
          <?php }  ?>
     </tbody>

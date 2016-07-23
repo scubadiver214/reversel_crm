@@ -21,6 +21,13 @@ p { clear: both; }
 .submit { margin-left: 12em; }
 em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 .err{color:#F00; font-size:14px;}
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
 </style>
   <script>
   var JQ = jQuery.noConflict();
@@ -36,9 +43,8 @@ JQ(document).ready(function() {
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><h2>Lead Form Details</h2></td>
-    <td align="right">
-   <!-- <a href="update_form.php?refID=<?PHP echo $data[0]['Reference']; ?>"><img src="images/list-details.png" alt="" title="Update" border="0" /></a>
-    <a href="listlead.php"><img src="images/list-details.png" alt="" title="List" border="0" /></a>-->
+    <td align="right" class="no-print">
+      <img src="../images/printbutton2-md.png" alt="" title="Print" onclick="javascript:print();" style="height:30px; width=40px; cursor: pointer; margin-right: 10px;" border="0" />
     </td>
   </tr>
 </table>
@@ -60,6 +66,27 @@ JQ(document).ready(function() {
    	 <legend>View Lead</legend>
     <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%">
  	  <!--part1-->
+
+  <!-- dob -->
+     <?php         
+      $datesFormatted1 = "";
+      $datesFormatted2 = "";    
+      if($data[0]['dob1']){
+        $datesFormatted1 = explode('-', $data[0]['dob1']);
+				$monthFormatted1 = $datesFormatted1[2];
+				$dayFormatted1 = $datesFormatted1[1];
+				$yearFormatted1 = $datesFormatted1[0];
+				$dobFormatted1 = $dayFormatted1.'-'.$monthFormatted1.'-'.$yearFormatted1;
+      }
+      if($data[0]['dob2']){
+        $datesFormatted2 = explode('-', $data[0]['dob2']);
+				$monthFormatted2 = $datesFormatted2[2];
+				$dayFormatted2 = $datesFormatted2[1];
+				$yearFormatted2 = $datesFormatted2[0];
+				$dobFormatted2 = $dayFormatted2.'-'.$monthFormatted2.'-'.$yearFormatted2;
+      }
+      ?>
+
      <tr>
     <td>
      <fieldset>
@@ -70,13 +97,20 @@ JQ(document).ready(function() {
 	  <input name="refid" type="hidden" value="<?php echo $data[0]['Reference']; ?>" />
     <td width="30%" align="left" nowrap="nowrap"><?php echo $data[0]['Title']." ". $data[0]['FirstName']." ".$data[0]['LastName']; ?></td>
     <td width="20%" align="right"><strong>Senior1 DOB:</strong></td>
-    <td width="30%" align="left"><?php echo $data[0]['dob1']; ?></td>
+    <td width="30%" align="left"><?php echo $dobFormatted1; ?></td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap"><strong>Senior Name 2:</strong></td>
       <td align="left" nowrap="nowrap"><?php echo $data[0]['Title2']." ". $data[0]['FirstName2']." ".$data[0]['LastName2']; ?></td>
       <td align="right"><strong>Senior2 DOB:</strong></td>
-      <td align="left"><?php echo $data[0]['dob2']; ?></td>
+      <td align="left"><?php echo $dobFormatted2; ?></td>
+    </tr>
+    
+    <tr>
+      <td align="right" nowrap="nowrap"><strong>Senior Age 1:</strong></td>
+      <td align="left" nowrap="nowrap"><?php echo $data[0]['age']?></td>
+      <td align="right" nowrap="nowrap"><strong>Senior Age 2:</strong></td>
+      <td align="left" nowrap="nowrap"><?php echo $data[0]['age2']?></td>
     </tr>
     <tr>
       <td align="right" nowrap="nowrap"><strong>Phone Number:</strong></td>
@@ -143,29 +177,8 @@ JQ(document).ready(function() {
      </fieldset>
     </td>
  	</tr>
-     <!--part3--> 
-    <tr>
-    <td>
-     <?php //include("footerlead.php"); ?>
-    <fieldset>
-    <legend>Agnent View</legend>
-    <table border="0" align="center" cellpadding="2" cellspacing="3" width="100%" style="font-size:13px;">
-	<tr>
-    <td width="20%" align="right" valign="top" nowrap="nowrap"><strong>Agent Name:</strong></td>
-    <td width="30%" align="left" valign="top"> 
-	 <label><?php echo $data[0]['transfer_to'];?></label>  
-    </td>
-     <td width="20%" align="right" valign="top" nowrap="nowrap"><strong>Comments:</strong></td>
-    <td width="30%" align="left" valign="top"><label><?php echo $data[0]['comments']?></label> </td>
-    </tr>
+      <!--part 3-->
    
-    </table>
-     </fieldset>
-    </td>
- 	</tr>
-      <!--part4-->
-   
- 
      </table>
  </fieldset>
           </form>
